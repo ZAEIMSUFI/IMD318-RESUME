@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biodata - Muhammad Zaeim Sufi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-modern">
+    <!-- Footer -->
+    <div class="footer">© 2025 Muhammad Zaeim Sufi Bin Jamaludin. All Rights Reserved.</div>
+
+    <!-- Marquee -->
+    <div class="marquee-container" id="marqueeContainer">
+        <div class="marquee-content">
+            <span class="marquee-item"><i class="fas fa-graduation-cap"></i> Information Management Student at UiTM</span>
+            <span class="marquee-item"><i class="fas fa-palette"></i> Multimedia Designer & Graphic Artist</span>
+            <span class="marquee-item"><i class="fas fa-laptop-code"></i> Aspiring Software Developer</span>
+            <span class="marquee-item"><i class="fas fa-camera"></i> Photography & Videography Enthusiast</span>
+            <span class="marquee-item"><i class="fas fa-bullseye"></i> Seeking Internship Opportunities</span>
+            <span class="marquee-item"><i class="fas fa-graduation-cap"></i> Information Management Student at UiTM</span>
+            <span class="marquee-item"><i class="fas fa-palette"></i> Multimedia Designer & Graphic Artist</span>
+            <span class="marquee-item"><i class="fas fa-laptop-code"></i> Aspiring Software Developer</span>
+            <span class="marquee-item"><i class="fas fa-camera"></i> Photography & Videography Enthusiast</span>
+            <span class="marquee-item"><i class="fas fa-bullseye"></i> Seeking Internship Opportunities</span>
+        </div>
+    </div>
+    <button class="marquee-toggle" id="marqueeToggle" onclick="toggleMarquee()">
+        <i class="fas fa-chevron-down" id="marqueeToggleIcon"></i>
+    </button>
+
+    <!-- Date/Time Widget -->
+    <div class="datetime-widget">
+        <div class="datetime-date" id="currentDate">Loading...</div>
+        <div class="datetime-time" id="currentTime">--:--:--</div>
+    </div>
+
+    <!-- Spotify Widget -->
+    <div class="spotify-widget" id="spotifyWidget">
+        <div class="spotify-header">
+            <div class="spotify-title">
+                <i class="fab fa-spotify"></i>
+                <span>Now Playing</span>
+                <span class="spotify-badge">Live</span>
+            </div>
+            <button class="spotify-toggle" onclick="toggleSpotify()">
+                <i class="fas fa-minus" id="spotifyToggleIcon"></i>
+            </button>
+        </div>
+        <div class="spotify-player-container">
+            <iframe class="spotify-player" id="spotifyPlayer" src="https://open.spotify.com/embed/track/46kspZSY3aKmwQe7O77fCC?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+        <div class="spotify-controls">
+            <button class="spotify-btn" onclick="previousTrack()"><i class="fas fa-backward"></i> Prev</button>
+            <button class="spotify-btn" onclick="nextTrack()">Next <i class="fas fa-forward"></i></button>
+        </div>
+    </div>
+
+    <!-- Control Buttons -->
+    <div class="control-buttons">
+        <div class="theme-selector">
+            <button class="control-btn-main" onclick="toggleThemeDropdown()"><i class="fas fa-palette"></i></button>
+            <div class="control-dropdown" id="themeDropdown">
+                <div class="dropdown-title">Select Theme</div>
+                <div class="dropdown-option active" onclick="setTheme('', this)"><div class="theme-color-preview default"></div><div class="option-label">Midnight Dark</div></div>
+                <div class="dropdown-option" onclick="setTheme('blue', this)"><div class="theme-color-preview blue"></div><div class="option-label">Ocean Blue</div></div>
+                <div class="dropdown-option" onclick="setTheme('purple', this)"><div class="theme-color-preview purple"></div><div class="option-label">Royal Purple</div></div>
+                <div class="dropdown-option" onclick="setTheme('green', this)"><div class="theme-color-preview green"></div><div class="option-label">Forest Green</div></div>
+                <div class="dropdown-option" onclick="setTheme('red', this)"><div class="theme-color-preview red"></div><div class="option-label">Crimson Red</div></div>
+                <div class="dropdown-option" onclick="setTheme('orange', this)"><div class="theme-color-preview orange"></div><div class="option-label">Honey Orange</div></div>
+                <div class="dropdown-option" onclick="setTheme('teal', this)"><div class="theme-color-preview teal"></div><div class="option-label">Midnight Teal</div></div>
+                <div class="dropdown-option" onclick="setTheme('rose', this)"><div class="theme-color-preview rose"></div><div class="option-label">Rose Gold</div></div>
+            </div>
+        </div>
+        <div class="font-selector">
+            <button class="control-btn-main" onclick="toggleFontDropdown()"><i class="fas fa-font"></i></button>
+            <div class="control-dropdown" id="fontDropdown">
+                <div class="dropdown-title">Select Font</div>
+                <div class="dropdown-option active" onclick="setFont('modern', this)"><div class="font-preview modern">Aa</div><div class="option-label">Modern</div></div>
+                <div class="dropdown-option" onclick="setFont('classic', this)"><div class="font-preview classic">Aa</div><div class="option-label">Classic</div></div>
+                <div class="dropdown-option" onclick="setFont('pixel', this)"><div class="font-preview pixel">Aa</div><div class="option-label">Pixel</div></div>
+                <div class="dropdown-option" onclick="setFont('script', this)"><div class="font-preview script">Aa</div><div class="option-label">Script</div></div>
+                <div class="dropdown-option" onclick="setFont('mono', this)"><div class="font-preview mono">Aa</div><div class="option-label">Mono</div></div>
+                <div class="dropdown-option" onclick="setFont('sporty', this)"><div class="font-preview sporty">Aa</div><div class="option-label">Sporty</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <a href="index.html" class="nav-item" data-tooltip="Home"><i class="fas fa-home"></i></a>
+        <a href="biodata.html" class="nav-item active" data-tooltip="Biodata"><i class="fas fa-user"></i></a>
+        <a href="experience.html" class="nav-item" data-tooltip="Experience"><i class="fas fa-briefcase"></i></a>
+        <a href="projects.html" class="nav-item" data-tooltip="Projects"><i class="fas fa-code"></i></a>
+        <a href="education.html" class="nav-item" data-tooltip="Education"><i class="fas fa-graduation-cap"></i></a>
+        <a href="family.html" class="nav-item" data-tooltip="Family"><i class="fas fa-users"></i></a>
+        <a href="gallery.html" class="nav-item" data-tooltip="Gallery"><i class="fas fa-images"></i></a>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="page">
+        <div class="page-content">
+            <div class="profile-section">
+                <!-- Profile Sidebar -->
+                <div class="profile-card">
+                    <div class="profile-header">
+                        <div class="profile-avatar" id="profileAvatar">
+                            <img src="pfp.jpg" alt="Profile Picture" id="profileImage" onerror="this.style.display='none'">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="profile-greeting">Hello!</div>
+                        <div class="profile-name">Zaeim Sufi</div>
+                        <div class="profile-role">Information Management Student</div>
+                    </div>
+                    
+                    <div class="profile-body">
+                        <div class="info-section">
+                            <div class="section-title"><i class="fas fa-address-card"></i> Personal Details</div>
+                            <div class="info-item">
+                                <div class="info-icon"><i class="fas fa-map-marker-alt"></i></div>
+                                <div><div class="info-label">Address</div><div class="info-value">No 2, Jalan Orkid 1, Taman Sri Penawar<br>Bandar Penawar, 81930 Johor</div></div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon"><i class="fas fa-flag"></i></div>
+                                <div><div class="info-label">Nationality</div><div class="info-value">Malaysian</div></div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon"><i class="fas fa-globe"></i></div>
+                                <div><div class="info-label">Languages</div><div class="info-value">Malay (Native)<br>English (Fluent)</div></div>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <div class="section-title"><i class="fas fa-envelope"></i> Contact</div>
+                            <div class="info-item">
+                                <div class="info-icon"><i class="fas fa-envelope"></i></div>
+                                <div><div class="info-label">Email</div><div class="info-value">zaeimsufi@gmail.com</div></div>
+                            </div>
+                            <div class="info-item">
+                                <div class="info-icon"><i class="fas fa-phone"></i></div>
+                                <div><div class="info-label">Phone</div><div class="info-value">011-1070 7250</div></div>
+                            </div>
+                        </div>
+
+                        <div class="info-section">
+                            <div class="section-title"><i class="fas fa-share-alt"></i> Social Links</div>
+                            <div class="social-grid">
+                                <a href="https://linkedin.com" class="social-btn" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://github.com" class="social-btn" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                                <a href="https://instagram.com/bladeee_" class="social-btn" target="_blank" title="Instagram: @bladeee_"><i class="fab fa-instagram"></i></a>
+                                <a href="https://tiktok.com/@d0ll_ax" class="social-btn" target="_blank" title="TikTok: @d0ll_ax"><i class="fab fa-tiktok"></i></a>
+                                <a href="https://discord.com/users/blade_51" class="social-btn" target="_blank" title="Discord: blade_51"><i class="fab fa-discord"></i></a>
+                                <a href="https://twitter.com/zaeimsufii" class="social-btn" target="_blank" title="Twitter: @zaeimsufii"><i class="fab fa-twitter"></i></a>
+                                <a href="https://facebook.com" class="social-btn" target="_blank" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://dribbble.com" class="social-btn" target="_blank" title="Dribbble"><i class="fab fa-dribbble"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="content-area">
+                    <div class="card">
+                        <div class="card-head">
+                            <div class="card-icon"><i class="fas fa-user-circle"></i></div>
+                            <div class="card-title">About Me</div>
+                        </div>
+                        <p style="font-size: 16px; line-height: 1.8; color: var(--text-secondary); margin-bottom: 20px;">
+                            I am a motivated and detail-oriented Information Management student at Universiti Teknologi MARA (UiTM) with a solid foundation in digital records, metadata standards, and information systems. I demonstrate strong ability to organize, analyze, and preserve both physical and digital assets in academic settings.
+                        </p>
+                        <p style="font-size: 16px; line-height: 1.8; color: var(--text-secondary);">
+                            Passionate about multimedia design and software development, I blend creativity with technical skills to deliver visually compelling and functional solutions. With hands-on experience in graphic design, programming, and project leadership, I'm eager to apply my knowledge in real-world scenarios and contribute to innovative digital solutions.
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-head">
+                            <div class="card-icon"><i class="fas fa-star"></i></div>
+                            <div class="card-title">Core Competencies</div>
+                        </div>
+                        <div class="skills-grid">
+                            <div class="skill-group">
+                                <div class="skill-group-title"><i class="fas fa-database"></i> Information Management</div>
+                                <div class="skill"><div class="skill-info"><span class="skill-name">Digital Records Management</span><span class="skill-percent">85%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%"></div></div></div>
+                                <div class="skill"><div class="skill-info"><span class="skill-name">Metadata Standards (MARC21)</span><span class="skill-percent">80%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 80%"></div></div></div>
+                                <div class="skill"><div class="skill-info"><span class="skill-name">Information Governance</span><span class="skill-percent">75%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 75%"></div></div></div>
+                                <div class="skill"><div class="skill-info"><span class="skill-name">Data Organization & Classification</span><span class="skill-percent">78%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 78%"></div></div></div>
+                            </div>
+                            <div class="skill-group">
+                                <div class="skill-group-title"><i class="fas fa-palette"></i> Design & Multimedia</div>
+                                <div class="skill"><div class="skill-info"><span class="skill-name">Adobe Photoshop</span><span class="skill-percent">90%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 90%"></div></div></div>
+                                <div class="skill"><div class="skill-info"><span class="skill-name">Adobe Illustrator</span><span class="skill-percent">85%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%"></div></div></div>
+                                <div class="skill"><div class="skill-info"><span class="skill-name">Canva</span><span class="skill-percent">95%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 95%"></div></div></div>
+                                <div class="skill"><div class="skill-info"><span class="skill-name">Adobe Premiere Pro</span><span class="skill-percent">80%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 80%"></div></div></div>
+                            </div>
+                            <div class="skill-group">
+                                <div class="skill-group-title"><i class="fas fa-code"></i> Programming & Software</div>
+                                <div class="skill"><div class="skill-info"><span class="skill-name">C++</span><span class="skill-percent">70%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 70%"></div></div></div>
+                                <div class="skill"><div class="skill-info"><span class="skill-name">SQL</span><span class="skill-percent">65%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 65%"></div></div></div>
+                                <div class="skill"><div class="skill-info"><span class="skill-name">HTML/CSS</span><span class="skill-percent">75%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 75%"></div></div></div>
+                                <div class="skill"><div class="skill-info"><span class="skill-name">Microsoft Office 365</span><span class="skill-percent">88%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 88%"></div></div></div>
+                            </div>
+                            <div class="skill-group">
+                                <div class="skill-group-title"><i class="fas fa-users"></i> Soft Skills</div>
+                                <div class="skill"><div class="skill-info"><span class="skill-name">Leadership & Project Coordination</span><span class="skill-percent">88%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 88%"></div></div></div>
+                                <div class="skill"><div class="skill-info"><span class="skill-name">Team Collaboration</span><span class="skill-percent">92%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 92%"></div></div></div>
+                                <div class="skill"><div class="skill-info"><span class="skill-name">Problem Solving</span><span class="skill-percent">85%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 85%"></div></div></div>
+                                <div class="skill"><div class="skill-info"><span class="skill-name">Research & Analytical Thinking</span><span class="skill-percent">83%</span></div><div class="skill-bar-bg"><div class="skill-bar-fill" style="width: 83%"></div></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-head">
+                            <div class="card-icon"><i class="fas fa-lightbulb"></i></div>
+                            <div class="card-title">Professional Interests</div>
+                        </div>
+                        <div style="font-size: 16px; line-height: 1.8; color: var(--text-secondary);">
+                            <p style="margin-bottom: 20px;"><strong>1. Software Development & Programming</strong></p>
+                            <p style="margin-bottom: 20px; padding-left: 20px;">Passionate about coding and developing practical applications, with a focus on improving user experience and problem-solving through programming.</p>
+                            
+                            <p style="margin-bottom: 20px;"><strong>2. Multimedia & Graphic Design</strong></p>
+                            <p style="margin-bottom: 20px; padding-left: 20px;">Enthusiastic about creating visually compelling digital content using tools like Adobe Photoshop, Illustrator, and Premiere Pro, combining creativity with technical skills.</p>
+                            
+                            <p style="margin-bottom: 20px;"><strong>3. Information Management & Digital Preservation</strong></p>
+                            <p style="margin-bottom: 20px; padding-left: 20px;">Interested in digital records management, metadata systems, information governance, and supporting digitization initiatives.</p>
+                            
+                            <p style="margin-bottom: 20px;"><strong>4. Continuous Learning & Professional Growth</strong></p>
+                            <p style="padding-left: 20px;">Committed to expanding technical knowledge and skills through online courses, certifications, and hands-on projects in software and multimedia fields.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

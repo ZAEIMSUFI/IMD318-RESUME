@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience - Muhammad Zaeim Sufi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-modern">
+    <!-- Footer -->
+    <div class="footer">© 2025 Muhammad Zaeim Sufi Bin Jamaludin. All Rights Reserved.</div>
+
+    <!-- Marquee -->
+    <div class="marquee-container" id="marqueeContainer">
+        <div class="marquee-content">
+            <span class="marquee-item"><i class="fas fa-graduation-cap"></i> Information Management Student at UiTM</span>
+            <span class="marquee-item"><i class="fas fa-palette"></i> Multimedia Designer & Graphic Artist</span>
+            <span class="marquee-item"><i class="fas fa-laptop-code"></i> Aspiring Software Developer</span>
+            <span class="marquee-item"><i class="fas fa-camera"></i> Photography & Videography Enthusiast</span>
+            <span class="marquee-item"><i class="fas fa-bullseye"></i> Seeking Internship Opportunities</span>
+            <span class="marquee-item"><i class="fas fa-graduation-cap"></i> Information Management Student at UiTM</span>
+            <span class="marquee-item"><i class="fas fa-palette"></i> Multimedia Designer & Graphic Artist</span>
+            <span class="marquee-item"><i class="fas fa-laptop-code"></i> Aspiring Software Developer</span>
+            <span class="marquee-item"><i class="fas fa-camera"></i> Photography & Videography Enthusiast</span>
+            <span class="marquee-item"><i class="fas fa-bullseye"></i> Seeking Internship Opportunities</span>
+        </div>
+    </div>
+    <button class="marquee-toggle" id="marqueeToggle" onclick="toggleMarquee()"><i class="fas fa-chevron-down" id="marqueeToggleIcon"></i></button>
+
+    <!-- Date/Time Widget -->
+    <div class="datetime-widget">
+        <div class="datetime-date" id="currentDate">Loading...</div>
+        <div class="datetime-time" id="currentTime">--:--:--</div>
+    </div>
+
+    <!-- Spotify Widget -->
+    <div class="spotify-widget" id="spotifyWidget">
+        <div class="spotify-header">
+            <div class="spotify-title"><i class="fab fa-spotify"></i><span>Now Playing</span><span class="spotify-badge">Live</span></div>
+            <button class="spotify-toggle" onclick="toggleSpotify()"><i class="fas fa-minus" id="spotifyToggleIcon"></i></button>
+        </div>
+        <div class="spotify-player-container">
+            <iframe class="spotify-player" id="spotifyPlayer" src="https://open.spotify.com/embed/track/46kspZSY3aKmwQe7O77fCC?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+        <div class="spotify-controls">
+            <button class="spotify-btn" onclick="previousTrack()"><i class="fas fa-backward"></i> Prev</button>
+            <button class="spotify-btn" onclick="nextTrack()">Next <i class="fas fa-forward"></i></button>
+        </div>
+    </div>
+
+    <!-- Control Buttons -->
+    <div class="control-buttons">
+        <div class="theme-selector">
+            <button class="control-btn-main" onclick="toggleThemeDropdown()"><i class="fas fa-palette"></i></button>
+            <div class="control-dropdown" id="themeDropdown">
+                <div class="dropdown-title">Select Theme</div>
+                <div class="dropdown-option active" onclick="setTheme('', this)"><div class="theme-color-preview default"></div><div class="option-label">Midnight Dark</div></div>
+                <div class="dropdown-option" onclick="setTheme('blue', this)"><div class="theme-color-preview blue"></div><div class="option-label">Ocean Blue</div></div>
+                <div class="dropdown-option" onclick="setTheme('purple', this)"><div class="theme-color-preview purple"></div><div class="option-label">Royal Purple</div></div>
+                <div class="dropdown-option" onclick="setTheme('green', this)"><div class="theme-color-preview green"></div><div class="option-label">Forest Green</div></div>
+                <div class="dropdown-option" onclick="setTheme('red', this)"><div class="theme-color-preview red"></div><div class="option-label">Crimson Red</div></div>
+                <div class="dropdown-option" onclick="setTheme('orange', this)"><div class="theme-color-preview orange"></div><div class="option-label">Honey Orange</div></div>
+                <div class="dropdown-option" onclick="setTheme('teal', this)"><div class="theme-color-preview teal"></div><div class="option-label">Midnight Teal</div></div>
+                <div class="dropdown-option" onclick="setTheme('rose', this)"><div class="theme-color-preview rose"></div><div class="option-label">Rose Gold</div></div>
+            </div>
+        </div>
+        <div class="font-selector">
+            <button class="control-btn-main" onclick="toggleFontDropdown()"><i class="fas fa-font"></i></button>
+            <div class="control-dropdown" id="fontDropdown">
+                <div class="dropdown-title">Select Font</div>
+                <div class="dropdown-option active" onclick="setFont('modern', this)"><div class="font-preview modern">Aa</div><div class="option-label">Modern</div></div>
+                <div class="dropdown-option" onclick="setFont('classic', this)"><div class="font-preview classic">Aa</div><div class="option-label">Classic</div></div>
+                <div class="dropdown-option" onclick="setFont('pixel', this)"><div class="font-preview pixel">Aa</div><div class="option-label">Pixel</div></div>
+                <div class="dropdown-option" onclick="setFont('script', this)"><div class="font-preview script">Aa</div><div class="option-label">Script</div></div>
+                <div class="dropdown-option" onclick="setFont('mono', this)"><div class="font-preview mono">Aa</div><div class="option-label">Mono</div></div>
+                <div class="dropdown-option" onclick="setFont('sporty', this)"><div class="font-preview sporty">Aa</div><div class="option-label">Sporty</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <a href="index.html" class="nav-item" data-tooltip="Home"><i class="fas fa-home"></i></a>
+        <a href="biodata.html" class="nav-item" data-tooltip="Biodata"><i class="fas fa-user"></i></a>
+        <a href="experience.html" class="nav-item active" data-tooltip="Experience"><i class="fas fa-briefcase"></i></a>
+        <a href="projects.html" class="nav-item" data-tooltip="Projects"><i class="fas fa-code"></i></a>
+        <a href="education.html" class="nav-item" data-tooltip="Education"><i class="fas fa-graduation-cap"></i></a>
+        <a href="family.html" class="nav-item" data-tooltip="Family"><i class="fas fa-users"></i></a>
+        <a href="gallery.html" class="nav-item" data-tooltip="Gallery"><i class="fas fa-images"></i></a>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="page">
+        <div class="page-content">
+            <!-- Professional Experience Card -->
+            <div class="card" style="margin-bottom: 32px;">
+                <div class="card-head">
+                    <div class="card-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="card-title">Professional Experience</div>
+                </div>
+                
+                <!-- Head of Multimedia Position -->
+                <div class="timeline-item">
+                    <span class="timeline-date">December 2024</span>
+                    <div class="timeline-title">Head of Multimedia</div>
+                    <div class="timeline-subtitle">Sekretariat Rakan Muda (SRM UiTMJ) - Gunung Pulai</div>
+                    <p class="timeline-text">
+                        Led comprehensive multimedia operations for the Youth Leadership Programme "Kem Pemantapan" at Gunung Pulai, a 3-day 2-night intensive leadership camp. Managed all aspects of visual communications and digital content creation:
+                    </p>
+                    <ul class="timeline-text">
+                        <li>Designed and produced complete visual identity including posters, banners, programme shirts, and promotional materials</li>
+                        <li>Created engaging template stories and presentation slides for camp activities and sessions</li>
+                        <li>Served as primary photographer and videographer, capturing key moments and programme highlights</li>
+                        <li>Produced professional montage video showcasing camp experiences and participant achievements</li>
+                        <li>Coordinated with camp organizers to ensure all multimedia deliverables aligned with programme objectives and timeline</li>
+                    </ul>
+                </div>
+                
+                <!-- Internship Position -->
+                <div class="timeline-item">
+                    <span class="timeline-date">28 July - 19 September 2024</span>
+                    <div class="timeline-title">Pegawai Pentadbiran (Administrative Officer)</div>
+                    <div class="timeline-subtitle">Institut Kemahiran Belia Negara (IKBN) - Internship</div>
+                    <p class="timeline-text">
+                        Completed a comprehensive internship focused on IT support, infrastructure management, and library system development:
+                    </p>
+                    <ul class="timeline-text">
+                        <li>Performed PC maintenance and troubleshooting to ensure optimal system performance and minimize downtime</li>
+                        <li>Executed network infrastructure tasks including cutting, assembling, and organizing cabling systems for improved connectivity</li>
+                        <li>Developed and implemented a library management system for IKBN library, streamlining book cataloging and lending processes</li>
+                        <li>Provided technical support for administrative operations and assisted with various IT-related projects</li>
+                    </ul>
+                </div>
+                
+                <!-- Freelance Graphic Designer Position -->
+                <div class="timeline-item">
+                    <span class="timeline-date">May 2023 - December 2023</span>
+                    <div class="timeline-title">Freelance Graphic Designer</div>
+                    <div class="timeline-subtitle">Sneaker on Street (SNK) - Local Malaysian Brand</div>
+                    <p class="timeline-text">
+                        Designed original graphics for SNK's "Jupiter Love" shirt and custom sneaker designs, supporting the brand's launch of a fresh streetwear collection. Responsibilities included:
+                    </p>
+                    <ul class="timeline-text">
+                        <li>Utilized Krita and Inkscape to create high-quality digital illustrations and vector artwork aligned with brand vision</li>
+                        <li>Collaborated closely with the client to understand design goals and deliver tailored visual solutions</li>
+                        <li>Successfully delivered designs according to specifications, focusing on creative execution</li>
+                        <li>Managed project timelines effectively to ensure timely delivery of all creative assets</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Leadership Experience Card -->
+            <div class="card">
+                <div class="card-head">
+                    <div class="card-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <div class="card-title">Leadership Experience</div>
+                </div>
+                
+                <!-- Project Leader Position -->
+                <div class="timeline-item">
+                    <span class="timeline-date">March 2024 - August 2024</span>
+                    <div class="timeline-title">Project Leader - Computer System Operation</div>
+                    <div class="timeline-subtitle">Final Year Project - UiTM Segamat, Johor</div>
+                    <p class="timeline-text">
+                        Directed a comprehensive end-to-end computer lab network project, demonstrating strong leadership and technical management skills:
+                    </p>
+                    <ul class="timeline-text">
+                        <li>Led team in designing and implementing computer lab setup including network architecture, hardware selection, and ergonomic layout</li>
+                        <li>Coordinated multidisciplinary team collaboration, delegating tasks based on strengths and facilitating effective communication</li>
+                        <li>Managed technical analysis and budget optimization to maximize value within constraints</li>
+                        <li>Produced and presented professional documentation including technical specs, floor plans, and safety protocols to faculty</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Muhammad Zaeim Sufi</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="font-modern">
+    <!-- Footer -->
+    <div class="footer">© 2025 Muhammad Zaeim Sufi Bin Jamaludin. All Rights Reserved.</div>
+
+    <!-- Marquee -->
+    <div class="marquee-container" id="marqueeContainer">
+        <div class="marquee-content">
+            <span class="marquee-item"><i class="fas fa-graduation-cap"></i> Information Management Student at UiTM</span>
+            <span class="marquee-item"><i class="fas fa-palette"></i> Multimedia Designer & Graphic Artist</span>
+            <span class="marquee-item"><i class="fas fa-laptop-code"></i> Aspiring Software Developer</span>
+            <span class="marquee-item"><i class="fas fa-camera"></i> Photography & Videography Enthusiast</span>
+            <span class="marquee-item"><i class="fas fa-bullseye"></i> Seeking Internship Opportunities</span>
+            <span class="marquee-item"><i class="fas fa-graduation-cap"></i> Information Management Student at UiTM</span>
+            <span class="marquee-item"><i class="fas fa-palette"></i> Multimedia Designer & Graphic Artist</span>
+            <span class="marquee-item"><i class="fas fa-laptop-code"></i> Aspiring Software Developer</span>
+            <span class="marquee-item"><i class="fas fa-camera"></i> Photography & Videography Enthusiast</span>
+            <span class="marquee-item"><i class="fas fa-bullseye"></i> Seeking Internship Opportunities</span>
+        </div>
+    </div>
+    <button class="marquee-toggle" id="marqueeToggle" onclick="toggleMarquee()"><i class="fas fa-chevron-down" id="marqueeToggleIcon"></i></button>
+
+    <!-- Date/Time Widget -->
+    <div class="datetime-widget">
+        <div class="datetime-date" id="currentDate">Loading...</div>
+        <div class="datetime-time" id="currentTime">--:--:--</div>
+    </div>
+
+    <!-- Spotify Widget -->
+    <div class="spotify-widget" id="spotifyWidget">
+        <div class="spotify-header">
+            <div class="spotify-title"><i class="fab fa-spotify"></i><span>Now Playing</span><span class="spotify-badge">Live</span></div>
+            <button class="spotify-toggle" onclick="toggleSpotify()"><i class="fas fa-minus" id="spotifyToggleIcon"></i></button>
+        </div>
+        <div class="spotify-player-container">
+            <iframe class="spotify-player" id="spotifyPlayer" src="https://open.spotify.com/embed/track/46kspZSY3aKmwQe7O77fCC?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+        <div class="spotify-controls">
+            <button class="spotify-btn" onclick="previousTrack()"><i class="fas fa-backward"></i> Prev</button>
+            <button class="spotify-btn" onclick="nextTrack()">Next <i class="fas fa-forward"></i></button>
+        </div>
+    </div>
+
+    <!-- Control Buttons -->
+    <div class="control-buttons">
+        <div class="theme-selector">
+            <button class="control-btn-main" onclick="toggleThemeDropdown()"><i class="fas fa-palette"></i></button>
+            <div class="control-dropdown" id="themeDropdown">
+                <div class="dropdown-title">Select Theme</div>
+                <div class="dropdown-option active" onclick="setTheme('', this)"><div class="theme-color-preview default"></div><div class="option-label">Midnight Dark</div></div>
+                <div class="dropdown-option" onclick="setTheme('blue', this)"><div class="theme-color-preview blue"></div><div class="option-label">Ocean Blue</div></div>
+                <div class="dropdown-option" onclick="setTheme('purple', this)"><div class="theme-color-preview purple"></div><div class="option-label">Royal Purple</div></div>
+                <div class="dropdown-option" onclick="setTheme('green', this)"><div class="theme-color-preview green"></div><div class="option-label">Forest Green</div></div>
+                <div class="dropdown-option" onclick="setTheme('red', this)"><div class="theme-color-preview red"></div><div class="option-label">Crimson Red</div></div>
+                <div class="dropdown-option" onclick="setTheme('orange', this)"><div class="theme-color-preview orange"></div><div class="option-label">Honey Orange</div></div>
+                <div class="dropdown-option" onclick="setTheme('teal', this)"><div class="theme-color-preview teal"></div><div class="option-label">Midnight Teal</div></div>
+                <div class="dropdown-option" onclick="setTheme('rose', this)"><div class="theme-color-preview rose"></div><div class="option-label">Rose Gold</div></div>
+            </div>
+        </div>
+        <div class="font-selector">
+            <button class="control-btn-main" onclick="toggleFontDropdown()"><i class="fas fa-font"></i></button>
+            <div class="control-dropdown" id="fontDropdown">
+                <div class="dropdown-title">Select Font</div>
+                <div class="dropdown-option active" onclick="setFont('modern', this)"><div class="font-preview modern">Aa</div><div class="option-label">Modern</div></div>
+                <div class="dropdown-option" onclick="setFont('classic', this)"><div class="font-preview classic">Aa</div><div class="option-label">Classic</div></div>
+                <div class="dropdown-option" onclick="setFont('pixel', this)"><div class="font-preview pixel">Aa</div><div class="option-label">Pixel</div></div>
+                <div class="dropdown-option" onclick="setFont('script', this)"><div class="font-preview script">Aa</div><div class="option-label">Script</div></div>
+                <div class="dropdown-option" onclick="setFont('mono', this)"><div class="font-preview mono">Aa</div><div class="option-label">Mono</div></div>
+                <div class="dropdown-option" onclick="setFont('sporty', this)"><div class="font-preview sporty">Aa</div><div class="option-label">Sporty</div></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <a href="index.html" class="nav-item" data-tooltip="Home"><i class="fas fa-home"></i></a>
+        <a href="biodata.html" class="nav-item" data-tooltip="Biodata"><i class="fas fa-user"></i></a>
+        <a href="experience.html" class="nav-item" data-tooltip="Experience"><i class="fas fa-briefcase"></i></a>
+        <a href="projects.html" class="nav-item active" data-tooltip="Projects"><i class="fas fa-code"></i></a>
+        <a href="education.html" class="nav-item" data-tooltip="Education"><i class="fas fa-graduation-cap"></i></a>
+        <a href="family.html" class="nav-item" data-tooltip="Family"><i class="fas fa-users"></i></a>
+        <a href="gallery.html" class="nav-item" data-tooltip="Gallery"><i class="fas fa-images"></i></a>
+    </nav>
+
+    <!-- Page Content -->
+    <div class="page">
+        <div class="page-content">
+            <div class="card">
+                <div class="card-head">
+                    <div class="card-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="card-title">Academic Projects</div>
+                </div>
+                
+                <div class="projects-grid">
+                    <!-- Youth Leadership Programme -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-mountain"></i>
+                            </div>
+                            <div class="project-info">
+                                <h3>Youth Leadership Programme - Kem Pemantapan</h3>
+                                <div class="project-meta"><i class="fas fa-calendar"></i> December 2024 (3 Days 2 Nights)</div>
+                                <div class="project-meta"><i class="fas fa-building"></i> Sekretariat Rakan Muda UiTMJ - Gunung Pulai</div>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Served as Head of Multimedia for an intensive youth leadership camp at Gunung Pulai, managing all visual communications and digital content creation from concept to final delivery. Handled complete multimedia scope including design, photography, videography, and post-production. Worked under tight deadlines to deliver high-quality materials that enhanced the camp's visual identity and participant experience.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Graphic Design</span>
+                            <span class="tag">Photography</span>
+                            <span class="tag">Video Production</span>
+                            <span class="tag">Event Documentation</span>
+                            <span class="tag">Leadership</span>
+                        </div>
+                    </div>
+
+                    <!-- Digital Food Ordering System -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-utensils"></i>
+                            </div>
+                            <div class="project-info">
+                                <h3>Digital Food Ordering System</h3>
+                                <div class="project-meta"><i class="fas fa-calendar"></i> October 2024 - January 2025</div>
+                                <div class="project-meta"><i class="fas fa-book"></i> Programming For Information Professionals</div>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Collaborated in a team to design and implement a user-friendly C++ application for Urban Crave Cafe, streamlining the ordering process and improving customer experience. Built a flexible system structure with modular and scalable architecture, allowing easy updates to menu items, pricing, and features. Programmed automated billing calculations including totals, taxes, and discounts, and integrated both dine-in and takeaway options.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">C++</span>
+                            <span class="tag">Software Development</span>
+                            <span class="tag">System Design</span>
+                            <span class="tag">Team Project</span>
+                        </div>
+                    </div>
+
+                    <!-- Round Table Discussion -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-comments"></i>
+                            </div>
+                            <div class="project-info">
+                                <h3>Round Table Discussion Leadership</h3>
+                                <div class="project-meta"><i class="fas fa-calendar"></i> October 2024 - January 2025</div>
+                                <div class="project-meta"><i class="fas fa-book"></i> Human Communication for Information Professionals</div>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Led and facilitated a structured roleplay-based group discussion on post-high school education pathways, ensuring inclusive participation and focused dialogue among team members. Coordinated diverse perspectives and role assignments representing multiple viewpoints including higher education, alternative pathways, and financial planning.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Leadership</span>
+                            <span class="tag">Communication</span>
+                            <span class="tag">Critical Thinking</span>
+                            <span class="tag">Documentation</span>
+                        </div>
+                    </div>
+
+                    <!-- Computer Lab Network Design -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-network-wired"></i>
+                            </div>
+                            <div class="project-info">
+                                <h3>Computer Lab Network Design</h3>
+                                <div class="project-meta"><i class="fas fa-calendar"></i> March 2024 - August 2024</div>
+                                <div class="project-meta"><i class="fas fa-book"></i> Computer System Operation</div>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Directed a comprehensive end-to-end computer lab network project including network architecture design, hardware selection, and ergonomic layout planning tailored for tertiary-level academic use. Oversaw project planning and delegated tasks based on team strengths, facilitating effective communication to ensure timely completion.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Network Design</span>
+                            <span class="tag">Project Management</span>
+                            <span class="tag">Technical Documentation</span>
+                            <span class="tag">Budget Planning</span>
+                        </div>
+                    </div>
+
+                    <!-- IKBN Library System -->
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-icon">
+                                <i class="fas fa-book-reader"></i>
+                            </div>
+                            <div class="project-info">
+                                <h3>IKBN Library Management System</h3>
+                                <div class="project-meta"><i class="fas fa-calendar"></i> July - September 2024</div>
+                                <div class="project-meta"><i class="fas fa-building"></i> Institut Kemahiran Belia Negara (IKBN) Internship</div>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Developed and implemented a comprehensive library management system for the IKBN library during internship period. The system streamlined book cataloging, lending processes, and inventory management. Also performed extensive IT infrastructure work including PC maintenance, troubleshooting, and network cabling installation to support library operations and administrative functions.
+                        </p>
+                        <div class="project-tags">
+                            <span class="tag">Library System</span>
+                            <span class="tag">Database Management</span>
+                            <span class="tag">IT Support</span>
+                            <span class="tag">Network Infrastructure</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
