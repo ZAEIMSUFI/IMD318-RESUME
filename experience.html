@@ -6,79 +6,21 @@
     <title>Experience - Muhammad Zaeim Sufi</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Ensure weather icon appears white on dark/black themes */
+        html[data-theme="dark"] .weather-icon,
+        html[data-theme="black"] .weather-icon,
+        body.theme-dark .weather-icon,
+        body.theme-black .weather-icon,
+        .theme-dark .weather-icon,
+        .theme-black .weather-icon {
+            color: #ffffff !important;
+            filter: none !important;
+            opacity: 1 !important;
+        }
+    </style>
 </head>
 <body class="font-modern">
-    <!-- Footer -->
-    <div class="footer">© 2025 Muhammad Zaeim Sufi Bin Jamaludin. All Rights Reserved.</div>
-
-    <!-- Marquee -->
-    <div class="marquee-container" id="marqueeContainer">
-        <div class="marquee-content">
-            <span class="marquee-item"><i class="fas fa-graduation-cap"></i> Information Management Student at UiTM</span>
-            <span class="marquee-item"><i class="fas fa-palette"></i> Multimedia Designer & Graphic Artist</span>
-            <span class="marquee-item"><i class="fas fa-laptop-code"></i> Aspiring Software Developer</span>
-            <span class="marquee-item"><i class="fas fa-camera"></i> Photography & Videography Enthusiast</span>
-            <span class="marquee-item"><i class="fas fa-bullseye"></i> Seeking Internship Opportunities</span>
-            <span class="marquee-item"><i class="fas fa-graduation-cap"></i> Information Management Student at UiTM</span>
-            <span class="marquee-item"><i class="fas fa-palette"></i> Multimedia Designer & Graphic Artist</span>
-            <span class="marquee-item"><i class="fas fa-laptop-code"></i> Aspiring Software Developer</span>
-            <span class="marquee-item"><i class="fas fa-camera"></i> Photography & Videography Enthusiast</span>
-            <span class="marquee-item"><i class="fas fa-bullseye"></i> Seeking Internship Opportunities</span>
-        </div>
-    </div>
-    <button class="marquee-toggle" id="marqueeToggle" onclick="toggleMarquee()"><i class="fas fa-chevron-down" id="marqueeToggleIcon"></i></button>
-
-    <!-- Date/Time Widget -->
-    <div class="datetime-widget">
-        <div class="datetime-date" id="currentDate">Loading...</div>
-        <div class="datetime-time" id="currentTime">--:--:--</div>
-    </div>
-
-    <!-- Spotify Widget -->
-    <div class="spotify-widget" id="spotifyWidget">
-        <div class="spotify-header">
-            <div class="spotify-title"><i class="fab fa-spotify"></i><span>Now Playing</span><span class="spotify-badge">Live</span></div>
-            <button class="spotify-toggle" onclick="toggleSpotify()"><i class="fas fa-minus" id="spotifyToggleIcon"></i></button>
-        </div>
-        <div class="spotify-player-container">
-            <iframe class="spotify-player" id="spotifyPlayer" src="https://open.spotify.com/embed/track/46kspZSY3aKmwQe7O77fCC?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
-        <div class="spotify-controls">
-            <button class="spotify-btn" onclick="previousTrack()"><i class="fas fa-backward"></i> Prev</button>
-            <button class="spotify-btn" onclick="nextTrack()">Next <i class="fas fa-forward"></i></button>
-        </div>
-    </div>
-
-    <!-- Control Buttons -->
-    <div class="control-buttons">
-        <div class="theme-selector">
-            <button class="control-btn-main" onclick="toggleThemeDropdown()"><i class="fas fa-palette"></i></button>
-            <div class="control-dropdown" id="themeDropdown">
-                <div class="dropdown-title">Select Theme</div>
-                <div class="dropdown-option active" onclick="setTheme('', this)"><div class="theme-color-preview default"></div><div class="option-label">Midnight Dark</div></div>
-                <div class="dropdown-option" onclick="setTheme('blue', this)"><div class="theme-color-preview blue"></div><div class="option-label">Ocean Blue</div></div>
-                <div class="dropdown-option" onclick="setTheme('purple', this)"><div class="theme-color-preview purple"></div><div class="option-label">Royal Purple</div></div>
-                <div class="dropdown-option" onclick="setTheme('green', this)"><div class="theme-color-preview green"></div><div class="option-label">Forest Green</div></div>
-                <div class="dropdown-option" onclick="setTheme('red', this)"><div class="theme-color-preview red"></div><div class="option-label">Crimson Red</div></div>
-                <div class="dropdown-option" onclick="setTheme('orange', this)"><div class="theme-color-preview orange"></div><div class="option-label">Honey Orange</div></div>
-                <div class="dropdown-option" onclick="setTheme('teal', this)"><div class="theme-color-preview teal"></div><div class="option-label">Midnight Teal</div></div>
-                <div class="dropdown-option" onclick="setTheme('rose', this)"><div class="theme-color-preview rose"></div><div class="option-label">Rose Gold</div></div>
-            </div>
-        </div>
-        <div class="font-selector">
-            <button class="control-btn-main" onclick="toggleFontDropdown()"><i class="fas fa-font"></i></button>
-            <div class="control-dropdown" id="fontDropdown">
-                <div class="dropdown-title">Select Font</div>
-                <div class="dropdown-option active" onclick="setFont('modern', this)"><div class="font-preview modern">Aa</div><div class="option-label">Modern</div></div>
-                <div class="dropdown-option" onclick="setFont('classic', this)"><div class="font-preview classic">Aa</div><div class="option-label">Classic</div></div>
-                <div class="dropdown-option" onclick="setFont('pixel', this)"><div class="font-preview pixel">Aa</div><div class="option-label">Pixel</div></div>
-                <div class="dropdown-option" onclick="setFont('script', this)"><div class="font-preview script">Aa</div><div class="option-label">Script</div></div>
-                <div class="dropdown-option" onclick="setFont('mono', this)"><div class="font-preview mono">Aa</div><div class="option-label">Mono</div></div>
-                <div class="dropdown-option" onclick="setFont('sporty', this)"><div class="font-preview sporty">Aa</div><div class="option-label">Sporty</div></div>
-            </div>
-        </div>
-    </div>
-
     <!-- Navigation -->
     <nav class="main-nav">
         <a href="index.html" class="nav-item" data-tooltip="Home"><i class="fas fa-home"></i></a>
@@ -179,6 +121,102 @@
             </div>
         </div>
     </div>
+
+    <!-- Widgets -->
+    <!-- Date/Time Widget -->
+    <div class="datetime-widget">
+        <div class="datetime-date" id="currentDate">Loading...</div>
+        <div class="datetime-time" id="currentTime">--:--:--</div>
+    </div>
+
+    <!-- Spotify Widget -->
+    <div class="spotify-widget" id="spotifyWidget">
+        <div class="spotify-header">
+            <div class="spotify-title"><i class="fab fa-spotify"></i><span>Now Playing</span><span class="spotify-badge">Live</span></div>
+            <button class="spotify-toggle" onclick="toggleSpotify()"><i class="fas fa-minus" id="spotifyToggleIcon"></i></button>
+        </div>
+        <div class="spotify-player-container">
+            <iframe class="spotify-player" id="spotifyPlayer" src="https://open.spotify.com/embed/track/46kspZSY3aKmwQe7O77fCC?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        </div>
+        <div class="spotify-controls">
+            <button class="spotify-btn" onclick="previousTrack()"><i class="fas fa-backward"></i> Prev</button>
+            <button class="spotify-btn" onclick="nextTrack()">Next <i class="fas fa-forward"></i></button>
+        </div>
+    </div>
+
+    <!-- Control Buttons -->
+    <div class="control-buttons">
+        <div class="theme-selector">
+            <button class="control-btn-main" onclick="toggleThemeDropdown()"><i class="fas fa-palette"></i></button>
+            <div class="control-dropdown" id="themeDropdown">
+                <div class="dropdown-title">Select Theme</div>
+                <div class="dropdown-option active" onclick="setTheme('', this)"><div class="theme-color-preview default"></div><div class="option-label">Midnight Dark</div></div>
+                <div class="dropdown-option" onclick="setTheme('blue', this)"><div class="theme-color-preview blue"></div><div class="option-label">Ocean Blue</div></div>
+                <div class="dropdown-option" onclick="setTheme('purple', this)"><div class="theme-color-preview purple"></div><div class="option-label">Royal Purple</div></div>
+                <div class="dropdown-option" onclick="setTheme('green', this)"><div class="theme-color-preview green"></div><div class="option-label">Forest Green</div></div>
+                <div class="dropdown-option" onclick="setTheme('red', this)"><div class="theme-color-preview red"></div><div class="option-label">Crimson Red</div></div>
+                <div class="dropdown-option" onclick="setTheme('orange', this)"><div class="theme-color-preview orange"></div><div class="option-label">Honey Orange</div></div>
+                <div class="dropdown-option" onclick="setTheme('teal', this)"><div class="theme-color-preview teal"></div><div class="option-label">Midnight Teal</div></div>
+                <div class="dropdown-option" onclick="setTheme('rose', this)"><div class="theme-color-preview rose"></div><div class="option-label">Rose Gold</div></div>
+            </div>
+        </div>
+        <div class="font-selector">
+            <button class="control-btn-main" onclick="toggleFontDropdown()"><i class="fas fa-font"></i></button>
+            <div class="control-dropdown" id="fontDropdown">
+                <div class="dropdown-title">Select Font</div>
+                <div class="dropdown-option active" onclick="setFont('modern', this)"><div class="font-preview modern">Aa</div><div class="option-label">Modern</div></div>
+                <div class="dropdown-option" onclick="setFont('classic', this)"><div class="font-preview classic">Aa</div><div class="option-label">Classic</div></div>
+                <div class="dropdown-option" onclick="setFont('pixel', this)"><div class="font-preview pixel">Aa</div><div class="option-label">Pixel</div></div>
+                <div class="dropdown-option" onclick="setFont('script', this)"><div class="font-preview script">Aa</div><div class="option-label">Script</div></div>
+                <div class="dropdown-option" onclick="setFont('mono', this)"><div class="font-preview mono">Aa</div><div class="option-label">Mono</div></div>
+                <div class="dropdown-option" onclick="setFont('sporty', this)"><div class="font-preview sporty">Aa</div><div class="option-label">Sporty</div></div>
+            </div>
+        </div>
+        <div class="weather-selector">
+            <button class="control-btn-main" onclick="toggleWeatherDropdown()"><i class="fas fa-cloud-sun"></i></button>
+            <div class="control-dropdown" id="weatherDropdown">
+                <div class="dropdown-title">Weather <button class="weather-refresh" onclick="getWeather()" title="Refresh Weather"><i class="fas fa-refresh"></i></button></div>
+                <div class="cardContainer">
+                    <div class="card">
+                        <p class="city" id="weatherCity">Loading...</p>
+                        <p class="weather" id="weatherDesc">Fetching weather...</p>
+                        <i class="fas fa-cloud-sun weather-icon"></i>
+                        <p class="temp" id="weatherTemp">--°C</p>
+                        <div class="minmaxContainer">
+                            <div class="min">
+                                <p class="minHeading">Min</p>
+                                <p class="minTemp" id="weatherMin">--°C</p>
+                            </div>
+                            <div class="max">
+                                <p class="maxHeading">Max</p>
+                                <p class="maxTemp" id="weatherMax">--°C</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Marquee -->
+    <div class="marquee-container" id="marqueeContainer">
+        <div class="marquee-content">
+            <span class="marquee-item"><i class="fas fa-graduation-cap"></i> Information Management Student at UiTM</span>
+            <span class="marquee-item"><i class="fas fa-palette"></i> Multimedia Designer & Graphic Artist</span>
+            <span class="marquee-item"><i class="fas fa-laptop-code"></i> Aspiring Software Developer</span>
+            <span class="marquee-item"><i class="fas fa-camera"></i> Photography & Videography Enthusiast</span>
+            <span class="marquee-item"><i class="fas fa-bullseye"></i> Seeking Internship Opportunities</span>
+            <span class="marquee-item"><i class="fas fa-graduation-cap"></i> Information Management Student at UiTM</span>
+            <span class="marquee-item"><i class="fas fa-palette"></i> Multimedia Designer & Graphic Artist</span>
+            <span class="marquee-item"><i class="fas fa-laptop-code"></i> Aspiring Software Developer</span>
+            <span class="marquee-item"><i class="fas fa-camera"></i> Photography & Videography Enthusiast</span>
+            <span class="marquee-item"><i class="fas fa-bullseye"></i> Seeking Internship Opportunities</span>
+        </div>
+    </div>
+    <button class="marquee-toggle" id="marqueeToggle" onclick="toggleMarquee()"><i class="fas fa-chevron-down" id="marqueeToggleIcon"></i></button>
+
+    <!-- Footer -->
+    <div class="footer">© 2025 Muhammad Zaeim Sufi Bin Jamaludin. All Rights Reserved.</div>
 
     <script src="script.js"></script>
 </body>
