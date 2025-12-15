@@ -43,6 +43,7 @@
             align-self: stretch; /* ensure it stretches to match the right column */
             transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
             will-change: transform;
+            /* restored: removed max-height and overflow to avoid internal scroll */
         }
 
         .profile-card:hover {
@@ -81,29 +82,23 @@
         /* Use grid for cards so they line up in neat rows on wider screens */
         .content-area {
             display: grid;
-            /* equal width columns for consistent card widths */
             grid-template-columns: repeat(2, minmax(0, 1fr));
             gap: 32px;
-            grid-auto-rows: 1fr;   /* equal row heights */
-            align-items: stretch;
-            min-width: 0; /* allow children to shrink correctly */
+            grid-auto-rows: auto;   /* CHANGED: let each row size to its content (was 1fr) */
+            align-items: start;     /* CHANGED: align cards to the top */
+            min-width: 0;
         }
 
-        /* Ensure the first card spans full width (single card above) */
-        .content-area > .card:first-child {
-            grid-column: 1 / -1;
-        }
-
-        /* Ensure each card fills its cell and keeps consistent spacing */
+        /* Ensure each card sizes to its content (avoid forced empty space) */
         .content-area .card {
             display: flex;
             flex-direction: column;
             width: 100%;
-            height: 100%;      /* fill the grid cell */
-            min-height: 0;     /* allow flex children to shrink (avoid overflow) */
+            height: auto;        /* CHANGED: let card height follow content (was 100%) */
+            min-height: 0;
             box-sizing: border-box;
             justify-content: flex-start;
-            align-self: stretch;
+            align-self: start;
         }
 
         /* Prevent about-me image from stretching to match grid row height */
@@ -151,9 +146,13 @@
         }
         /* make this card span full width like "About Me" */
         .content-area > .about-me-card { grid-column: 1 / -1; }
+        /* make Core Competencies span full width as well */
+        .content-area > .competency-card { grid-column: 1 / -1; }
+        /* make the "About Me" primary card span full width too */
+        .content-area > .card:first-child { grid-column: 1 / -1; }
         .about-me-side img {
             width: 220px;               /* wider, matches card visual weight */
-            height: 100%;               /* fill available height of the card */
+            height: 100%;    /* restored: fill card height for consistent layout */
             object-fit: cover;
             border-radius: 12px;
             border: 1px solid var(--border);
@@ -314,6 +313,77 @@
         @media (max-width: 900px) {
             .content-area .card { padding: 14px; }
             .card-head { margin-bottom: 12px; }
+        }
+
+        /* Added: Core Competencies styles */
+        .competency-card .card-head { margin-bottom: 14px; }
+        .competency-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 14px;
+            align-items: stretch;
+            margin-top: 6px;
+        }
+        .competency-item {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            padding: 12px;
+            border-radius: 10px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            border: 1px solid rgba(255,255,255,0.03);
+            transition: transform .16s ease, box-shadow .16s ease, background .16s ease;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.04);
+            min-height: 64px;
+        }
+        .competency-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.45);
+            background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.015));
+        }
+        .competency-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.03);
+            font-size: 18px;
+            flex-shrink: 0;
+        }
+        .competency-text { display:flex; flex-direction:column; min-width:0; }
+        .competency-title { font-weight:700; font-size:14px; color:var(--text); }
+        .competency-sub { font-size:13px; color:var(--text-secondary); line-height:1.35; margin-top:2px; }
+
+        @media (max-width:520px) {
+            .competency-item { padding:10px; gap:10px; }
+            .competency-icon { width:40px; height:40px; font-size:16px; }
+        }
+
+        /* Added: sidebar skill/interest sections */
+        .profile-card .skill-section { margin-top: 14px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.03); }
+        .profile-card .skill-section .section-title { font-size: 13px; font-weight:700; margin-bottom:8px; display:block; }
+        .profile-card .skill-list { font-size: 14px; color: var(--text-secondary); line-height: 1.5; padding-left: 14px; margin: 0; list-style: disc; }
+        .profile-card .skill-list li { margin-bottom: 12px; }
+        .profile-card .skill-heading { display: block; font-weight: 700; margin-bottom: 6px; }
+        .profile-card .skill-desc { margin: 0 0 8px 0; color: var(--text-secondary); line-height: 1.45; }
+        .profile-card .skill-block { margin-bottom: 14px; }
+
+        /* Justify Snapshot and About Me paragraphs for cleaner edges */
+        .about-me-text p { text-align: justify; text-justify: inter-word; }
+        .content-area > .card:first-child p { text-align: justify; text-justify: inter-word; }
+
+        /* Justify technical skills, skill headings and descriptions */
+        .profile-card .skill-section .skill-list li {
+            text-align: justify;
+            text-justify: inter-word;
+        }
+        .profile-card .skill-list li p,
+        .profile-card .skill-desc {
+            text-align: justify;
+            text-justify: inter-word;
+            margin-top: 6px; /* small gap between heading and description */
         }
     </style>
 </head>
@@ -490,6 +560,65 @@
                                 <a href="https://dribbble.com" class="social-btn" target="_blank" title="Dribbble"><i class="fab fa-dribbble"></i></a>
                             </div>
                         </div>
+
+                        <!-- Added: Technical Skills -->
+                        <div class="info-section skill-section">
+                            <div class="section-title"><i class="fas fa-cogs"></i> TECHNICAL SKILLS</div>
+                            <ul class="skill-list">
+                                <li><strong>Platforms &amp; Software:</strong> Microsoft Excel (Basic), Microsoft PowerPoint, Microsoft 365, Canva, Adobe Photoshop, Adobe Illustrator</li>
+                                <li><strong>Programming Languages:</strong> SQL (Basic), C++ (Basic)</li>
+                                <li><strong>Design &amp; Multimedia Tools:</strong> Canva, Adobe Photoshop, Adobe Illustrator</li>
+                            </ul>
+                        </div>
+
+                        <!-- Added: Skills & Interest -->
+                        <div class="info-section skill-section">
+                            <div class="section-title"><i class="fas fa-star"></i> SKILLS &amp; INTEREST</div>
+
+                            <div class="skill-block">
+                                <div class="interest-heading">SKILLS</div>
+                                <ul class="skill-list">
+                                    <li>
+                                        <span class="skill-heading">Leadership &amp; Project Coordination</span>
+                                        <p class="skill-desc">Led and coordinated team efforts for academic project assignments, ensuring effective task delegation and timely completion. Demonstrated ability to organize workflows and motivate team members to achieve project goals.</p>
+                                    </li>
+                                    <li>
+                                        <span class="skill-heading">Technical Expertise in Software &amp; Multimedia</span>
+                                        <p class="skill-desc">Proficient in programming languages such as C++ with hands-on experience developing practical applications. Advanced skills in multimedia and graphic design software including Adobe Photoshop, Illustrator, and Premiere Pro.</p>
+                                    </li>
+                                    <li>
+                                        <span class="skill-heading">Creative Problem Solving &amp; Design</span>
+                                        <p class="skill-desc">Strong ability to blend creativity with technical skills to deliver visually compelling and functional designs; experienced in producing digital assets that enhance learning and community engagement.</p>
+                                    </li>
+                                    <li>
+                                        <span class="skill-heading">Collaborative Team Player &amp; Adaptable Learner</span>
+                                        <p class="skill-desc">Dependable team member who contributes effectively within group settings. Quick to adapt to new tools, technologies, and evolving project requirements.</p>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div class="skill-block">
+                                <div class="interest-heading">INTERESTS</div>
+                                <ul class="skill-list">
+                                    <li>
+                                        <span class="skill-heading">Software Development &amp; Programming</span>
+                                        <p class="skill-desc">Passionate about coding and developing practical applications, with a focus on improving user experience and problem-solving through programming.</p>
+                                    </li>
+                                    <li>
+                                        <span class="skill-heading">Multimedia &amp; Graphic Design</span>
+                                        <p class="skill-desc">Enthusiastic about creating visually compelling digital content using tools like Adobe Photoshop and Illustrator.</p>
+                                    </li>
+                                    <li>
+                                        <span class="skill-heading">Continuous Learning &amp; Professional Growth</span>
+                                        <p class="skill-desc">Committed to expanding technical knowledge and skills through online courses, certifications, and hands-on projects.</p>
+                                    </li>
+                                    <li>
+                                        <span class="skill-heading">Community Engagement &amp; Collaboration</span>
+                                        <p class="skill-desc">Interested in contributing to team projects and community initiatives that leverage technology to create positive impact and foster learning.</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -646,7 +775,82 @@
                             <img src="me.jpg" alt="Me — Zaeim Sufi">
                             <div class="about-me-text">
                                 <h3 style="margin:0 0 8px 0;">Snapshot</h3>
-                                <p>Add a short personal description here — background, interests, or a short bio. Replace this text with your final explanation about yourself.</p>
+                                <p>I am Muhammad Zaeim Sufi bin Jamaludin, a Diploma in Information Management student at Universiti Teknologi MARA (UiTM), Segamat, majoring in Records and Archives Management. I have a strong interest in digital records management, information systems, and multimedia design, supported by a CGPA of 3.43.</p>
+                                <p>I have gained practical experience through my internship at Institut Kemahiran Belia Negara (IKBN) Bandar Penawar, where I worked on library system development, database management, digitization of materials, administrative support, and multimedia content creation. I am skilled in using Microsoft 365, Adobe Photoshop, Illustrator, Canva, and have basic programming knowledge in C++ and SQL.</p>
+                                <p>I am a motivated, adaptable, and team-oriented individual with leadership experience in academic and co-curricular projects. I am currently seeking an internship opportunity through the Industrial Training Management System (ITMS) to gain hands-on industry experience and further develop my professional and technical skills.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card competency-card">
+                        <div class="card-head">
+                            <div class="card-icon"><i class="fas fa-clipboard-list"></i></div>
+                            <div class="card-title">Core Competencies</div>
+                        </div>
+
+                        <div class="competency-grid">
+                            <div class="competency-item" title="Digital Records Management">
+                                <div class="competency-icon"><i class="fas fa-archive"></i></div>
+                                <div class="competency-text">
+                                    <div class="competency-title">Digital Records Management</div>
+                                    <div class="competency-sub">Organizing, storing and preserving digital assets</div>
+                                </div>
+                            </div>
+
+                            <div class="competency-item" title="Metadata Standards (MARC21)">
+                                <div class="competency-icon"><i class="fas fa-book"></i></div>
+                                <div class="competency-text">
+                                    <div class="competency-title">Metadata Standards (MARC21)</div>
+                                    <div class="competency-sub">Cataloguing & metadata best practices</div>
+                                </div>
+                            </div>
+
+                            <div class="competency-item" title="Information Governance">
+                                <div class="competency-icon"><i class="fas fa-gavel"></i></div>
+                                <div class="competency-text">
+                                    <div class="competency-title">Information Governance</div>
+                                    <div class="competency-sub">Policies, retention and compliance</div>
+                                </div>
+                            </div>
+
+                            <div class="competency-item" title="Document & Content Management Systems">
+                                <div class="competency-icon"><i class="fas fa-file-alt"></i></div>
+                                <div class="competency-text">
+                                    <div class="competency-title">Document & Content Management</div>
+                                    <div class="competency-sub">Word, Excel, PowerPoint, Canva, Illustrator, Photoshop</div>
+                                </div>
+                            </div>
+
+                            <div class="competency-item" title="Data Organization & Classification">
+                                <div class="competency-icon"><i class="fas fa-layer-group"></i></div>
+                                <div class="competency-text">
+                                    <div class="competency-title">Data Organization & Classification</div>
+                                    <div class="competency-sub">Taxonomies, indexing and structured data</div>
+                                </div>
+                            </div>
+
+                            <div class="competency-item" title="Basic Programming">
+                                <div class="competency-icon"><i class="fas fa-code"></i></div>
+                                <div class="competency-text">
+                                    <div class="competency-title">Basic Programming</div>
+                                    <div class="competency-sub">SQL, C++, HTML — fundamentals & practice</div>
+                                </div>
+                            </div>
+
+                            <div class="competency-item" title="Information Security & Compliance">
+                                <div class="competency-icon"><i class="fas fa-shield-alt"></i></div>
+                                <div class="competency-text">
+                                    <div class="competency-title">Information Security & Compliance</div>
+                                    <div class="competency-sub">Basic security concepts and data protection</div>
+                                </div>
+                            </div>
+
+                            <div class="competency-item" title="Research & Analytical Thinking">
+                                <div class="competency-icon"><i class="fas fa-search"></i></div>
+                                <div class="competency-text">
+                                    <div class="competency-title">Research & Analytical Thinking</div>
+                                    <div class="competency-sub">Data analysis, evidence-based problem solving</div>
+                                </div>
                             </div>
                         </div>
                     </div>
