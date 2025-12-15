@@ -6,6 +6,54 @@
     <title>Family - Muhammad Zaeim Sufi</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <style>
+        /* make family members clickable */
+        .family-member { cursor: pointer; }
+
+        /* modal */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-content {
+            background: var(--bg-card, #111);
+            padding: 12px;
+            border-radius: 10px;
+            max-width: 90%;
+            max-height: 90%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .modal-content img { max-width: 100%; max-height: 80vh; border-radius: 8px; display:block; }
+        .modal-close {
+            align-self: flex-end;
+            background: transparent;
+            border: none;
+            color: var(--text-secondary, #fff);
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        /* Ensure weather icon appears white on dark/black themes */
+        html[data-theme="dark"] .weather-icon,
+        html[data-theme="black"] .weather-icon,
+        body.theme-dark .weather-icon,
+        body.theme-black .weather-icon,
+        .theme-dark .weather-icon,
+        .theme-black .weather-icon {
+            color: #ffffff !important;
+            filter: none !important;
+            opacity: 1 !important;
+        }
+    </style>
 </head>
 <body class="font-modern">
     <!-- Footer -->
@@ -37,8 +85,8 @@
     <!-- Spotify Widget -->
     <div class="spotify-widget" id="spotifyWidget">
         <div class="spotify-header">
-            <div class="spotify-title"><i class="fab fa-spotify"></i><span>Now Playing</span><span class="spotify-badge">Live</span></div>
-            <button class="spotify-toggle" onclick="toggleSpotify()"><i class="fas fa-minus" id="spotifyToggleIcon"></i></button>
+            <div class="spotify-title"><i class="fas fa-music"></i><span>Now Playing</span><span class="spotify-badge">Live</span></div>
+            <button class="spotify-toggle" onclick="toggleSpotify()"><i class="fas fa-music" id="spotifyToggleIcon"></i></button>
         </div>
         <div class="spotify-player-container">
             <iframe class="spotify-player" id="spotifyPlayer" src="https://open.spotify.com/embed/track/46kspZSY3aKmwQe7O77fCC?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
@@ -77,6 +125,30 @@
                 <div class="dropdown-option" onclick="setFont('sporty', this)"><div class="font-preview sporty">Aa</div><div class="option-label">Sporty</div></div>
             </div>
         </div>
+        <div class="weather-selector">
+            <button class="control-btn-main" onclick="toggleWeatherDropdown()"><i class="fas fa-cloud-sun"></i></button>
+            <div class="control-dropdown" id="weatherDropdown">
+                <div class="dropdown-title">Weather <button class="weather-refresh" onclick="getWeather()" title="Refresh Weather"><i class="fas fa-refresh"></i></button></div>
+                <div class="cardContainer">
+                    <div class="card">
+                        <p class="city" id="weatherCity">Loading...</p>
+                        <p class="weather" id="weatherDesc">Fetching weather...</p>
+                        <i class="fas fa-cloud-sun weather-icon"></i>
+                        <p class="temp" id="weatherTemp">--°C</p>
+                        <div class="minmaxContainer">
+                            <div class="min">
+                                <p class="minHeading">Min</p>
+                                <p class="minTemp" id="weatherMin">--°C</p>
+                            </div>
+                            <div class="max">
+                                <p class="maxHeading">Max</p>
+                                <p class="maxTemp" id="weatherMax">--°C</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Navigation -->
@@ -101,7 +173,7 @@
                 
                 <div class="family-grid">
                     <!-- Father -->
-                    <div class="family-member">
+                    <div class="family-member" data-img="dad.jpg" title="Jamaludin bin Daud">
                         <div class="family-avatar"><i class="fas fa-user-tie"></i></div>
                         <div class="family-name">Jamaludin bin Daud</div>
                         <div class="family-relation">Father</div>
@@ -109,7 +181,7 @@
                     </div>
 
                     <!-- Mother -->
-                    <div class="family-member">
+                    <div class="family-member" data-img="mom.jpg" title="Normalidza binti Mohd Dalil">
                         <div class="family-avatar"><i class="fas fa-female"></i></div>
                         <div class="family-name">Normalidza binti Mohd Dalil</div>
                         <div class="family-relation">Mother</div>
@@ -117,7 +189,7 @@
                     </div>
 
                     <!-- Sister -->
-                    <div class="family-member">
+                    <div class="family-member" data-img="sister.jpg" title="Nurjazlin Sofia">
                         <div class="family-avatar"><i class="fas fa-user-graduate"></i></div>
                         <div class="family-name">Nurjazlin Sofia</div>
                         <div class="family-relation">Sister</div>
@@ -125,7 +197,7 @@
                     </div>
 
                     <!-- Me -->
-                    <div class="family-member">
+                    <div class="family-member" data-img="me.jpg" title="Muhammad Zaeim Sufi">
                         <div class="family-avatar"><i class="fas fa-user"></i></div>
                         <div class="family-name">Muhammad Zaeim Sufi</div>
                         <div class="family-relation">Me</div>
@@ -133,7 +205,7 @@
                     </div>
 
                     <!-- Brother 1 -->
-                    <div class="family-member">
+                    <div class="family-member" data-img="bro1.jpg" title="Muhammad Darwish Syabil">
                         <div class="family-avatar"><i class="fas fa-user"></i></div>
                         <div class="family-name">Muhammad Darwish Syabil</div>
                         <div class="family-relation">Younger Brother 1</div>
@@ -141,17 +213,58 @@
                     </div>
 
                     <!-- Brother 2 -->
-                    <div class="family-member">
+                    <div class="family-member" data-img="bro2.jpg" title="Muhammad Rayyan Shafiq">
                         <div class="family-avatar"><i class="fas fa-child"></i></div>
                         <div class="family-name">Muhammad Rayyan Shafiq</div>
                         <div class="family-relation">Younger Brother 2</div>
                         <div class="family-age">11 years old<br>
                     </div>
                 </div>
-            </div>
+             </div>
+         </div>
+     </div>
+ 
+    <!-- Modal for family images -->
+    <div id="modalOverlay" class="modal-overlay" aria-hidden="true" role="dialog">
+        <div class="modal-content" role="document">
+            <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
+            <img id="modalImage" src="" alt="Family member">
+            <div id="modalCaption" style="color:var(--text-secondary,#ddd); font-size:14px;"></div>
         </div>
     </div>
+    <script>
+        // open modal when clicking a family member
+        (function(){
+            const members = document.querySelectorAll('.family-member[data-img]');
+            const overlay = document.getElementById('modalOverlay');
+            const imgEl = document.getElementById('modalImage');
+            const caption = document.getElementById('modalCaption');
+            const closeBtn = document.getElementById('modalClose');
 
+            members.forEach(m => {
+                m.addEventListener('click', () => {
+                    const src = m.getAttribute('data-img');
+                    imgEl.src = src;
+                    imgEl.alt = m.querySelector('.family-name')?.textContent || 'Family member';
+                    caption.textContent = m.querySelector('.family-name')?.textContent || '';
+                    overlay.classList.add('active');
+                    overlay.setAttribute('aria-hidden','false');
+                });
+            });
+
+            function closeModal(){
+                overlay.classList.remove('active');
+                overlay.setAttribute('aria-hidden','true');
+                imgEl.src = '';
+            }
+
+            overlay.addEventListener('click', (e) => {
+                if (e.target === overlay) closeModal();
+            });
+            closeBtn.addEventListener('click', closeModal);
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+        })();
+    </script>
     <script src="script.js"></script>
-</body>
-</html>
+ </body>
+ </html>
