@@ -174,6 +174,7 @@ a {
     position: fixed;
     top: 120px; /* Moved to top to position under the font selector */
     right: 25px;
+    left: auto;
     background: var(--bg-card);
     border-radius: 20px;
     border: 2px solid var(--border);
@@ -339,108 +340,118 @@ a {
     font-size: 28px;
 }
 
-.cardContainer {
-    width: fit-content;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+/* Restore Uiverse widget look — apply to floating widget and dropdown preview */
+.weather-widget-floating .cardContainer,
+.control-dropdown .cardContainer {
+  width: fit-content;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.card {
-    position: relative;
-    width: 220px;
-    height: 250px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    padding: 20px 10px;
-    border-radius: 10px;
-    backdrop-filter: blur(30px);
-    background-color: rgba(65, 65, 65, 0.308);
-    border: 1px solid rgba(255, 255, 255, 0.089);
-    cursor: pointer;
-    transition: all 0.3s ease;
+.weather-widget-floating .card,
+.control-dropdown .card {
+  position: relative;
+  width: 220px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 10px;
+  border-radius: 10px;
+  backdrop-filter: blur(30px);
+  background-color: rgba(65, 65, 65, 0.308);
+  border: 1px solid rgba(255, 255, 255, 0.089);
+  cursor: pointer;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+.weather-widget-floating .city,
+.control-dropdown .city {
+  font-weight: 700;
+  font-size: 0.9em;
+  letter-spacing: 1.2px;
+  color: white;
 }
 
-.city {
-    font-weight: 700;
-    font-size: 0.9em;
-    letter-spacing: 1.2px;
-    color: white;
+.weather-widget-floating .weather,
+.control-dropdown .weather {
+  font-weight: 500;
+  font-size: 0.7em;
+  letter-spacing: 1.2px;
+  color: rgb(197, 197, 197);
+  text-transform: capitalize;
 }
 
-.weather {
-    font-weight: 500;
-    font-size: 0.7em;
-    letter-spacing: 1.2px;
-    color: rgb(197, 197, 197);
-    text-transform: capitalize;
+.weather-widget-floating .temp,
+.control-dropdown .temp {
+  font-size: 1.8em;
+  color: white;
 }
 
-.temp {
-    font-size: 1.8em;
-    color: white;
+.weather-widget-floating .minmaxContainer,
+.control-dropdown .minmaxContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.minmaxContainer {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+.weather-widget-floating .min,
+.weather-widget-floating .max,
+.control-dropdown .min,
+.control-dropdown .max {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0px 20px;
+  gap: 4px;
 }
 
-.min,
-.max {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
-    padding: 0px 20px;
-    gap: 4px;
+.weather-widget-floating .max,
+.control-dropdown .max {
+  align-items: flex-start;
+  border-left: 2px solid white;
 }
 
-.max {
-    align-items: flex-start;
-    border-left: 2px solid white;
+.weather-widget-floating .maxHeading,
+.weather-widget-floating .minHeading,
+.control-dropdown .maxHeading,
+.control-dropdown .minHeading {
+  font-size: 0.7em;
+  font-weight: 600;
+  color: white;
 }
 
-.maxHeading,
-.minHeading {
-    font-size: 0.7em;
-    font-weight: 600;
-    color: white;
+.weather-widget-floating .maxTemp,
+.weather-widget-floating .minTemp,
+.control-dropdown .maxTemp,
+.control-dropdown .minTemp {
+  font-size: 0.6em;
+  font-weight: 500;
+  color: rgb(197, 197, 197);
 }
 
-.maxTemp,
-.minTemp {
-    font-size: 0.6em;
-    font-weight: 500;
-    color: rgb(197, 197, 197);
+.weather-widget-floating .cardContainer::before,
+.control-dropdown .cardContainer::before {
+  width: 100px;
+  height: 100px;
+  content: "";
+  position: absolute;
+  background-color: rgb(144, 161, 255);
+  z-index: -1;
+  border-radius: 50%;
+  left: 100px;
+  top: 50px;
+  transition: all 1s;
 }
 
-.cardContainer::before {
-    width: 100px;
-    height: 100px;
-    content: "";
-    position: absolute;
-    background-color: rgb(144, 161, 255);
-    z-index: -1;
-    border-radius: 50%;
-    left: 100px;
-    top: 50px;
-    transition: all 1s;
-}
-
-.cardContainer:hover::before {
-    transform: translate(-50px, 50px);
+.weather-widget-floating .cardContainer:hover::before,
+.control-dropdown .cardContainer:hover::before {
+  transform: translate(-50px, 50px);
 }
 
 /* ========================================
@@ -750,14 +761,13 @@ a {
 ========================================= */
 .page {
     min-height: 100vh;
-    padding: 50px 100px 70px 110px;
-    transition: padding 0.3s ease;
+    padding: 40px 40px 70px 60px; /* replace previous padding and allow more width */
 }
 
 .page.marquee-visible { padding-top: 80px; }
 
 .page-content {
-    max-width: 1200px;
+    max-width: 1200px; /* restored to 1200px */
     margin: 0 auto;
     animation: fadeIn 0.5s ease;
 }
@@ -816,7 +826,6 @@ a {
     background: linear-gradient(
         to bottom,
         rgba(0, 0, 0, 0.7) 0%,
-        rgba(0, 0, 0, 0.5) 40%,
         rgba(0, 0, 0, 0.3) 60%,
         rgba(0, 0, 0, 0.8) 100%
     );
@@ -1005,10 +1014,10 @@ a {
     height: 8px;
     background: rgba(255, 255, 255, 0.8);
     border-radius: 2px;
-    animation: scroll 1.5s ease-in-out infinite;
+    animation: wheel-scroll 1.5s ease-in-out infinite; /* renamed animation */
 }
 
-@keyframes scroll {
+@keyframes wheel-scroll {
     0% { transform: translateY(0); opacity: 1; }
     100% { transform: translateY(12px); opacity: 0; }
 }
@@ -1568,8 +1577,8 @@ a {
 ========================================= */
 .profile-section {
     display: grid;
-    grid-template-columns: 340px 1fr;
-    gap: 32px;
+    grid-template-columns: minmax(220px, 320px) 1fr; /* slightly narrower left column */
+    gap: 24px; /* reduced gap to make layout tighter */
     margin-bottom: 32px;
 }
 
@@ -1578,9 +1587,13 @@ a {
     border-radius: 20px;
     border: 1px solid var(--border);
     overflow: hidden;
-    height: fit-content;
+    height: auto;
     position: sticky;
     top: 30px;
+    max-width: 340px;
+    width: 100%;
+    box-sizing: border-box;
+    min-width: 0; /* important to allow grid children to shrink */
 }
 
 .profile-header {
@@ -1594,13 +1607,6 @@ a {
     height: 120px;
     margin: 0 auto 20px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--accent), var(--bg-card));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 48px;
-    border: 3px solid var(--border);
-    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
     overflow: hidden;
     position: relative;
 }
@@ -1609,7 +1615,7 @@ a {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    position: absolute;
+    display: block;
 }
 
 .profile-avatar.has-image i { display: none; }
@@ -1651,14 +1657,14 @@ a {
 
 .info-item {
     display: flex;
-    gap: 14px;
-    padding: 12px;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    transition: all 0.3s;
+    gap: 12px;
+    align-items: flex-start;
+    min-width: 0;
 }
-
-.info-item:hover { background: var(--bg-card); }
+.info-value {
+    word-break: break-word;
+    white-space: normal;
+}
 
 .info-icon {
     width: 36px;
@@ -1691,7 +1697,7 @@ a {
 ========================================= */
 .social-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(44px, 1fr));
     gap: 8px;
 }
 
@@ -1718,15 +1724,16 @@ a {
    CARDS
 ========================================= */
 .content-area {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); /* wider cards */
     gap: 24px;
+    min-width: 0;
 }
 
 .card {
     background: var(--bg-secondary);
     border-radius: 20px;
-    padding: 40px;
+    padding: 32px; /* reduced from 40px */
     border: 1px solid var(--border);
     transition: all 0.3s;
 }
@@ -2150,7 +2157,7 @@ a {
 
 .marquee-content {
     display: flex;
-    animation: scroll 30s linear infinite;
+    animation: marquee-scroll 30s linear infinite; /* renamed animation to avoid conflict */
     white-space: nowrap;
 }
 
@@ -2163,7 +2170,7 @@ a {
     gap: 8px;
 }
 
-@keyframes scroll {
+@keyframes marquee-scroll {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
 }
@@ -2495,9 +2502,9 @@ a {
     }
     
     .card {
-        width: 180px;
-        height: 210px;
-        padding: 15px 8px;
+        width: 100% !important;
+        height: auto !important;
+        padding: 20px !important;
     }
     
     .control-buttons { right: 10px; }
@@ -2524,7 +2531,7 @@ a {
     }
 }
 
-/* Add styles for the refresh button */
+/* Add styles for the refresh button (fix undefined variables) */
 .weather-widget-controls {
     display: flex;
     gap: 5px;
@@ -2533,7 +2540,7 @@ a {
 .weather-widget-refresh {
     background: none;
     border: none;
-    color: var(--text);
+    color: var(--text-primary); /* was var(--text) which is undefined */
     cursor: pointer;
     padding: 5px;
     border-radius: 5px;
@@ -2541,5 +2548,5 @@ a {
 }
 
 .weather-widget-refresh:hover {
-    background: var(--bg-hover);
+    background: var(--bg-card); /* was var(--bg-hover) which is undefined */
 }
