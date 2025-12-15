@@ -6,6 +6,39 @@
     <title>Education - Muhammad Zaeim Sufi</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
+    <!-- Added table styles -->
+    <style>
+        /* Education tables */
+        .edu-tables { display:flex; gap:16px; flex-wrap:wrap; margin-top:16px; }
+        .edu-table {
+            width:100%; max-width:520px;
+            border-radius:10px; overflow:hidden;
+            background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+            border: 1px solid rgba(255,255,255,0.04);
+            color: var(--text-secondary, #cbd5e1);
+            transition: transform .18s ease, box-shadow .18s ease;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+        }
+        .edu-table thead th {
+            text-align:left; padding:12px 16px; font-weight:700;
+            background: rgba(0,0,0,0.08); font-size:14px;
+        }
+        .edu-table tbody td {
+            padding:12px 16px; border-top:1px solid rgba(255,255,255,0.02);
+            font-size:14px;
+        }
+        .edu-table tbody tr:hover {
+            background: rgba(255,255,255,0.02);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.45);
+        }
+        .program-table thead th { text-transform:uppercase; letter-spacing:0.6px; }
+        .record-table thead th { font-weight:700; font-size:13px; }
+        @media (max-width:820px) {
+            .edu-tables { flex-direction:column; gap:12px; }
+            .edu-table { max-width:100%; }
+        }
+    </style>
 </head>
 <body class="font-modern">
     <!-- Footer -->
@@ -139,6 +172,40 @@
                         <li><strong>Key Focus Areas:</strong> Digital Records Management, Metadata Standards (MARC21), Information Systems, Data Organization & Classification</li>
                         <li><strong>Expected Graduation:</strong> 2026</li>
                     </ul>
+
+                    <!-- Added: Education tables (program summary + term records) -->
+                    <div class="edu-tables">
+                        <table class="edu-table program-table" role="table" aria-label="Program summary">
+                            <thead>
+                                <tr><th colspan="2">DIPLOMA IN INFORMATION MANAGEMENT</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>Institution</strong></td><td>Universiti Teknologi MARA (UiTM), Segamat, Johor</td></tr>
+                                <tr><td><strong>Duration</strong></td><td>2023 – 2026</td></tr>
+                                <tr><td><strong>Minor</strong></td><td>Records and Archives Management</td></tr>
+                            </tbody>
+                        </table>
+
+                        <table class="edu-table record-table" role="table" aria-label="Term records">
+                            <thead>
+                                <tr><th>Part</th><th>Dates</th><th>GPA</th><th>CGPA</th></tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Part 3</td>
+                                    <td>Feb 2025 – 14 Mar 2025</td>
+                                    <td>3.44</td>
+                                    <td>3.44</td>
+                                </tr>
+                                <tr>
+                                    <td>Part 4</td>
+                                    <td>July 2025 – 4 Sep 2025</td>
+                                    <td>3.39</td>
+                                    <td>3.43</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
 
                 <!-- SPM Education -->
