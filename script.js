@@ -253,14 +253,14 @@ function updateSpotifyPlayer() {
 
 function toggleSpotify() {
     const widget = document.getElementById('spotifyWidget');
-    const toggleIcon = document.getElementById('spotifyToggleIcon');
+    const toggleBtn = document.querySelector('.spotify-toggle');
     
     if (widget.classList.contains('minimized')) {
         widget.classList.remove('minimized');
-        toggleIcon.className = 'fas fa-music';
+        toggleBtn.classList.remove('collapsed');
     } else {
         widget.classList.add('minimized');
-        toggleIcon.className = 'fas fa-music'; // Keep music icon instead of +
+        toggleBtn.classList.add('collapsed');
     }
 }
 
