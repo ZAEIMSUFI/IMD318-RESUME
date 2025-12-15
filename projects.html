@@ -37,8 +37,8 @@
     <!-- Spotify Widget -->
     <div class="spotify-widget" id="spotifyWidget">
         <div class="spotify-header">
-            <div class="spotify-title"><i class="fab fa-spotify"></i><span>Now Playing</span><span class="spotify-badge">Live</span></div>
-            <button class="spotify-toggle" onclick="toggleSpotify()"><i class="fas fa-minus" id="spotifyToggleIcon"></i></button>
+            <div class="spotify-title"><i class="fas fa-music"></i><span>Now Playing</span><span class="spotify-badge">Live</span></div>
+            <button class="spotify-toggle" onclick="toggleSpotify()"><i class="fas fa-music" id="spotifyToggleIcon"></i></button>
         </div>
         <div class="spotify-player-container">
             <iframe class="spotify-player" id="spotifyPlayer" src="https://open.spotify.com/embed/track/46kspZSY3aKmwQe7O77fCC?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
@@ -75,6 +75,30 @@
                 <div class="dropdown-option" onclick="setFont('script', this)"><div class="font-preview script">Aa</div><div class="option-label">Script</div></div>
                 <div class="dropdown-option" onclick="setFont('mono', this)"><div class="font-preview mono">Aa</div><div class="option-label">Mono</div></div>
                 <div class="dropdown-option" onclick="setFont('sporty', this)"><div class="font-preview sporty">Aa</div><div class="option-label">Sporty</div></div>
+            </div>
+        </div>
+        <div class="weather-selector">
+            <button class="control-btn-main" onclick="toggleWeatherDropdown()"><i class="fas fa-cloud-sun"></i></button>
+            <div class="control-dropdown" id="weatherDropdown">
+                <div class="dropdown-title">Weather <button class="weather-refresh" onclick="getWeather()" title="Refresh Weather"><i class="fas fa-refresh"></i></button></div>
+                <div class="cardContainer">
+                    <div class="card">
+                        <p class="city" id="weatherCity">Loading...</p>
+                        <p class="weather" id="weatherDesc">Fetching weather...</p>
+                        <i class="fas fa-cloud-sun weather-icon"></i>
+                        <p class="temp" id="weatherTemp">--°C</p>
+                        <div class="minmaxContainer">
+                            <div class="min">
+                                <p class="minHeading">Min</p>
+                                <p class="minTemp" id="weatherMin">--°C</p>
+                            </div>
+                            <div class="max">
+                                <p class="maxHeading">Max</p>
+                                <p class="maxTemp" id="weatherMax">--°C</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
