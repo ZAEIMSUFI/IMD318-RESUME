@@ -229,7 +229,8 @@ const spotifyTracks = [
     'https://open.spotify.com/embed/track/3GVkPk8mqxz0itaAriG1L7?utm_source=generator&theme=0'
 ];
 
-let currentTrackIndex = parseInt(localStorage.getItem('spotify-track') || '0');
+let currentTrackIndex = parseInt(localStorage.getItem('spotify-track') || '0', 10);
+
 
 function sanitizeSpotifyTrackIndex() {
     if (Number.isNaN(currentTrackIndex) || currentTrackIndex < 0 || currentTrackIndex >= spotifyTracks.length) {
