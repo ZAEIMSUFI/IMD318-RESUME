@@ -227,17 +227,11 @@ const spotifyTracks = [
     'https://open.spotify.com/embed/track/46kspZSY3aKmwQe7O77fCC?utm_source=generator&theme=0',
     'https://open.spotify.com/embed/track/2OZVskV28xxJjjhQqKTLSg?utm_source=generator&theme=0',
     'https://open.spotify.com/embed/track/5de9Ho64dovuQI8Uhn5gPD?utm_source=generator&theme=0',
-    'https://open.spotify.com/embed/track/3GVkPk8mqxz0itaAriG1L7?utm_source=generator&theme=0',
-    'https://open.spotify.com/embed/track/4dTmQfqA75KrfynUF1TUX9?utm_source=generator&theme=0',
+    'https://open.spotify.com/embed/track/7AQim7LbvFVZJE3O8TYgf2?utm_source=generator&theme=0',
+    'https://open.spotify.com/embed/track/3GVkPk8mqxz0itaAriG1L7?utm_source=generator&theme=0'
 ];
 
 let currentTrackIndex = parseInt(localStorage.getItem('spotify-track') || '0');
-
-function sanitizeSpotifyTrackIndex() {
-    if (Number.isNaN(currentTrackIndex) || currentTrackIndex < 0 || currentTrackIndex >= spotifyTracks.length) {
-        currentTrackIndex = 0;
-    }
-}
 
 function nextTrack() {
     currentTrackIndex = (currentTrackIndex + 1) % spotifyTracks.length;
@@ -250,7 +244,6 @@ function previousTrack() {
 }
 
 function updateSpotifyPlayer() {
-    sanitizeSpotifyTrackIndex();
     const player = document.getElementById('spotifyPlayer');
     if (player) {
         player.src = spotifyTracks[currentTrackIndex];
@@ -348,7 +341,10 @@ function loadPreferences() {
     }
     
     // Spotify track
-    updateSpotifyPlayer();
+    const player = document.getElementById('spotifyPlayer');
+    if (player && currentTrackIndex > 0) {
+        player.src = spotifyTracks[currentTrackIndex];
+    }
     
     // Weather widget state
     const weatherMinimized = localStorage.getItem('weather-widget-minimized');
