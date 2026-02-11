@@ -24,6 +24,276 @@
         .skill-card:hover, .quick-card-enhanced:hover {
             transform: translateY(-5px);
         }
+
+        /* ===== MOBILE RESPONSIVE ===== */
+        
+        /* Tablet (768px and below) */
+        @media (max-width: 768px) {
+            /* Hero section adjustments */
+            .hero-title-enhanced {
+                font-size: 2.2rem !important;
+            }
+            .hero-subtitle-enhanced {
+                font-size: 1.1rem !important;
+            }
+            
+            /* Hero stats - 3 columns stay but shrink */
+            .hero-stats {
+                gap: 12px;
+            }
+            .stat-item {
+                padding: 12px 8px;
+            }
+            .stat-number {
+                font-size: 1.8rem;
+            }
+            .stat-label {
+                font-size: 0.75rem;
+            }
+            
+            /* Hero buttons - stack on smaller tablets */
+            .hero-actions {
+                flex-wrap: wrap;
+                gap: 10px;
+                justify-content: center;
+            }
+            .hero-btn {
+                padding: 12px 20px;
+                font-size: 0.95rem;
+            }
+            
+            /* Skills showcase - 2 columns */
+            .skills-showcase {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 16px;
+            }
+            .skill-card {
+                padding: 20px;
+            }
+            .skill-card h3 {
+                font-size: 1.2rem;
+            }
+            .skill-card p {
+                font-size: 0.9rem;
+            }
+            
+            /* Quick links - 2 columns */
+            .quick-links-enhanced {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 16px;
+            }
+            
+            /* Section title */
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .section-subtitle {
+                font-size: 1rem;
+            }
+            
+            /* CTA section */
+            .cta-title {
+                font-size: 1.8rem;
+            }
+            .cta-text {
+                font-size: 1rem;
+            }
+            .cta-buttons {
+                gap: 12px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .cta-btn {
+                padding: 12px 24px;
+                font-size: 0.95rem;
+            }
+        }
+        
+        /* Mobile (480px and below) */
+        @media (max-width: 480px) {
+            /* Hero section - mobile first */
+            .hero-title-enhanced {
+                font-size: 1.8rem !important;
+                margin-bottom: 12px;
+            }
+            .hero-subtitle-enhanced {
+                font-size: 0.95rem !important;
+                margin-bottom: 16px;
+            }
+            
+            /* Hero badge */
+            .hero-badge {
+                padding: 8px 12px;
+                font-size: 0.85rem;
+            }
+            
+            /* Hero stats - vertical stack */
+            .hero-stats {
+                flex-direction: column;
+                gap: 10px;
+                margin: 16px 0;
+            }
+            .stat-item {
+                padding: 10px;
+                flex-direction: row;
+                gap: 12px;
+                align-items: center;
+            }
+            .stat-number {
+                font-size: 1.5rem;
+                min-width: 50px;
+            }
+            .stat-label {
+                font-size: 0.7rem;
+                text-align: left;
+            }
+            
+            /* Hero buttons - single column */
+            .hero-actions {
+                flex-direction: column;
+                gap: 10px;
+                width: 100%;
+            }
+            .hero-btn {
+                width: 100%;
+                padding: 14px 20px;
+                font-size: 0.9rem;
+            }
+            
+            /* Skills showcase - 1 column */
+            .skills-showcase {
+                grid-template-columns: 1fr !important;
+                gap: 12px;
+            }
+            .skill-card {
+                padding: 16px;
+            }
+            .skill-card h3 {
+                font-size: 1.1rem;
+            }
+            .skill-card p {
+                font-size: 0.85rem;
+                margin: 8px 0;
+            }
+            .skill-tags {
+                gap: 6px;
+            }
+            .skill-tag {
+                padding: 4px 10px;
+                font-size: 0.7rem;
+            }
+            .skill-card-icon {
+                font-size: 2rem;
+            }
+            
+            /* Quick links - 1 column */
+            .quick-links-enhanced {
+                grid-template-columns: 1fr !important;
+                gap: 12px;
+            }
+            .quick-card-enhanced {
+                padding: 16px;
+                min-height: 120px;
+            }
+            .quick-card-icon-enhanced {
+                font-size: 1.8rem;
+                width: 40px;
+                height: 40px;
+            }
+            .quick-card-title-enhanced {
+                font-size: 1rem;
+                margin-bottom: 6px;
+            }
+            .quick-card-desc-enhanced {
+                font-size: 0.8rem;
+            }
+            
+            /* Section headers */
+            .section-header {
+                margin-bottom: 16px;
+            }
+            .section-title {
+                font-size: 1.4rem;
+            }
+            .section-subtitle {
+                font-size: 0.9rem;
+            }
+            
+            /* Featured section */
+            .featured-section {
+                padding: 20px 16px;
+            }
+            
+            /* CTA section */
+            .cta-section {
+                padding: 24px 16px;
+            }
+            .cta-title {
+                font-size: 1.4rem;
+                margin-bottom: 12px;
+            }
+            .cta-text {
+                font-size: 0.9rem;
+                margin-bottom: 16px;
+            }
+            .cta-buttons {
+                gap: 10px;
+                flex-direction: column;
+                width: 100%;
+            }
+            .cta-btn {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+                width: 100%;
+            }
+            
+            /* Navigation - ensure touch-friendly */
+            .main-nav {
+                gap: 8px;
+                padding: 12px 8px;
+            }
+            .nav-item {
+                padding: 12px;
+                font-size: 1.2rem;
+            }
+            
+            /* Page content padding */
+            .page-content {
+                padding: 16px;
+            }
+            
+            /* Marquee text size */
+            .marquee-item {
+                font-size: 0.85rem;
+            }
+            
+            /* Scroll indicator hide on mobile */
+            .scroll-indicator {
+                display: none;
+            }
+        }
+        
+        /* Extra small (under 360px) */
+        @media (max-width: 359px) {
+            .hero-title-enhanced {
+                font-size: 1.5rem !important;
+            }
+            .hero-subtitle-enhanced {
+                font-size: 0.85rem !important;
+            }
+            .hero-stats {
+                margin: 12px 0;
+            }
+            .stat-number {
+                font-size: 1.2rem;
+            }
+            .section-title {
+                font-size: 1.2rem;
+            }
+            .cta-title {
+                font-size: 1.2rem;
+            }
+        }
     </style>
 </head>
 <body class="font-modern">
