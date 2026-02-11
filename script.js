@@ -233,11 +233,6 @@ const spotifyTracks = [
 
 let currentTrackIndex = parseInt(localStorage.getItem('spotify-track') || '0', 10);
 
-function sanitizeSpotifyTrackIndex() {
-    if (Number.isNaN(currentTrackIndex) || currentTrackIndex < 0 || currentTrackIndex >= spotifyTracks.length) {
-        currentTrackIndex = 0;
-    }
-}
 
 function nextTrack() {
     currentTrackIndex = (currentTrackIndex + 1) % spotifyTracks.length;
@@ -250,7 +245,6 @@ function previousTrack() {
 }
 
 function updateSpotifyPlayer() {
-    sanitizeSpotifyTrackIndex();
     const player = document.getElementById('spotifyPlayer');
     if (player) {
         player.src = spotifyTracks[currentTrackIndex];
@@ -348,7 +342,10 @@ function loadPreferences() {
     }
     
     // Spotify track
-    updateSpotifyPlayer();
+    const player = document.getElementById('spotifyPlayer');
+    if (player && currentTrackIndex > 0) {
+        player.src = spotifyTracks[currentTrackIndex];
+    }
     
     // Weather widget state
     const weatherMinimized = localStorage.getItem('weather-widget-minimized');
