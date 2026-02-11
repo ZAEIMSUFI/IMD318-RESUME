@@ -226,7 +226,9 @@ function updateDateTime() {
 const spotifyTracks = [
     'https://open.spotify.com/embed/track/2OZVskV28xxJjjhQqKTLSg?utm_source=generator&theme=0',
     'https://open.spotify.com/embed/track/5de9Ho64dovuQI8Uhn5gPD?utm_source=generator&theme=0',
-    'https://open.spotify.com/embed/track/3GVkPk8mqxz0itaAriG1L7?utm_source=generator&theme=0'
+    'https://open.spotify.com/embed/track/3GVkPk8mqxz0itaAriG1L7?utm_source=generator&theme=0',
+    'https://open.spotify.com/embed/track/46kspZSY3aKmwQe7O77fCC?utm_source=generator',
+    'https://open.spotify.com/embed/track/4dTmQfqA75KrfynUF1TUX9?utm_source=generator'
 ];
 
 let currentTrackIndex = parseInt(localStorage.getItem('spotify-track') || '0', 10);
