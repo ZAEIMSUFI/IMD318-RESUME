@@ -209,11 +209,14 @@
         }
 
         /* Responsive Layout */
+        /* ===== MOBILE RESPONSIVE ===== */
+        
+        /* Tablet (900px and below) */
         @media (max-width: 900px) {
             .content-area { grid-template-columns: 1fr; } /* single column on tablets/phones */
             .profile-section {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 24px;
             }
 
             .profile-card {
@@ -224,12 +227,54 @@
             .spotify-widget, .datetime-widget, .weather-widget-floating {
                 display: none;
             }
+
+            .page-content {
+                padding: 30px 20px;
+            }
+
+            .profile-section {
+                gap: 20px;
+            }
+
+            .content-area .card {
+                padding: 18px;
+            }
+
+            .section-title {
+                font-size: 1.3rem;
+            }
+
+            .competency-grid {
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            }
+
+            .about-me-side {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .about-me-side img {
+                width: 100%;
+                max-width: 220px;
+                height: auto;
+            }
+
+            .about-me-text {
+                text-align: center;
+            }
         }
 
+        /* Mobile (768px and below) */
         @media (max-width: 768px) {
+            .page-content {
+                padding: 24px 16px;
+                max-width: 100%;
+            }
+
             .profile-section {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 20px;
             }
 
             .profile-card {
@@ -237,13 +282,375 @@
                 max-width: none;
             }
 
+            .content-area {
+                gap: 20px;
+                grid-template-columns: 1fr;
+            }
+
+            .content-area .card {
+                padding: 16px;
+                height: auto;
+            }
+
+            .card-head {
+                margin-bottom: 12px;
+            }
+
+            .card-head .card-icon {
+                font-size: 18px;
+            }
+
+            .card-head .card-title {
+                font-size: 16px;
+            }
+
+            .profile-header {
+                padding: 30px 20px;
+            }
+
+            .profile-avatar {
+                width: 100px;
+                height: 100px;
+                margin: 0 auto 10px;
+            }
+
+            .profile-name {
+                font-size: 1.4rem;
+            }
+
+            .profile-role {
+                font-size: 0.9rem;
+            }
+
+            .info-item {
+                gap: 12px;
+                padding: 8px 0;
+                font-size: 14px;
+            }
+
+            .info-label {
+                font-size: 0.85rem;
+            }
+
+            .info-value {
+                font-size: 14px;
+            }
+
+            .skill-tag {
+                padding: 4px 8px;
+                font-size: 0.75rem;
+            }
+
+            .social-grid {
+                gap: 10px;
+            }
+
+            .social-grid a {
+                min-height: 40px;
+                padding: 8px;
+            }
+
+            .competency-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 12px;
+            }
+
+            .competency-item {
+                padding: 10px;
+                min-height: 60px;
+            }
+
+            .competency-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+
+            .competency-title {
+                font-size: 13px;
+            }
+
+            .competency-sub {
+                font-size: 12px;
+            }
+
+            .skill {
+                margin-bottom: 12px;
+            }
+
+            .skill-info {
+                font-size: 13px;
+                gap: 10px;
+            }
+
+            .skill-name {
+                font-size: 13px;
+            }
+
+            .skill-percent {
+                font-size: 12px;
+            }
+
+            .about-me-text p {
+                font-size: 14px;
+                line-height: 1.6;
+                margin-bottom: 10px;
+            }
+
             .spotify-widget, .datetime-widget, .weather-widget-floating {
                 display: none;
             }
         }
 
+        /* Mobile (480px and below) */
         @media (max-width: 480px) {
-            .page-content { padding: 20px 12px; }
+            .page-content {
+                padding: 16px 12px;
+            }
+
+            .profile-section {
+                gap: 16px;
+            }
+
+            .profile-header {
+                padding: 24px 16px;
+            }
+
+            .profile-avatar {
+                width: 90px;
+                height: 90px;
+            }
+
+            .profile-name {
+                font-size: 1.3rem;
+                margin-bottom: 4px;
+            }
+
+            .profile-role {
+                font-size: 0.85rem;
+            }
+
+            .profile-greeting {
+                font-size: 0.9rem;
+                margin-bottom: 8px;
+            }
+
+            .content-area .card {
+                padding: 14px;
+            }
+
+            .card-head {
+                gap: 10px;
+                margin-bottom: 10px;
+            }
+
+            .card-head .card-icon {
+                font-size: 16px;
+            }
+
+            .card-head .card-title {
+                font-size: 15px;
+            }
+
+            .section-title {
+                font-size: 11px;
+                margin-bottom: 6px;
+            }
+
+            .info-section {
+                margin-bottom: 14px;
+            }
+
+            .info-item {
+                gap: 10px;
+                padding: 6px 0;
+            }
+
+            .info-icon {
+                min-width: 28px;
+                text-align: center;
+            }
+
+            .info-item div {
+                flex: 1;
+                min-width: 0;
+            }
+
+            .info-label {
+                font-size: 0.8rem;
+                margin-bottom: 2px;
+            }
+
+            .info-value {
+                font-size: 13px;
+                word-break: break-word;
+            }
+
+            .social-grid {
+                gap: 8px;
+                grid-template-columns: repeat(auto-fit, minmax(40px, 1fr));
+            }
+
+            .social-grid a {
+                min-height: 38px;
+                padding: 6px;
+                font-size: 0.9rem;
+            }
+
+            .skill {
+                margin-bottom: 10px;
+            }
+
+            .skill-info {
+                font-size: 12px;
+                gap: 8px;
+                flex-wrap: wrap;
+            }
+
+            .skill-name {
+                font-size: 12px;
+            }
+
+            .skill-percent {
+                font-size: 11px;
+            }
+
+            .skill-bar-bg {
+                height: 10px;
+            }
+
+            .competency-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+                gap: 10px;
+            }
+
+            .competency-item {
+                padding: 9px;
+                gap: 8px;
+                min-height: 55px;
+            }
+
+            .competency-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 15px;
+            }
+
+            .competency-title {
+                font-size: 12px;
+            }
+
+            .competency-sub {
+                font-size: 11px;
+                margin-top: 1px;
+            }
+
+            .about-me-side {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .about-me-side img {
+                width: 100%;
+                max-width: 180px;
+                height: auto;
+                margin-bottom: 12px;
+            }
+
+            .about-me-text {
+                text-align: center;
+            }
+
+            .about-me-text h3 {
+                font-size: 1.1rem;
+                margin-bottom: 8px;
+            }
+
+            .about-me-text p {
+                font-size: 13px;
+                line-height: 1.5;
+                margin-bottom: 8px;
+            }
+
+            .skill-list {
+                font-size: 13px !important;
+                padding-left: 18px;
+            }
+
+            .skill-list.numbered {
+                padding-left: 20px;
+            }
+
+            .skill-list li {
+                margin-bottom: 8px;
+            }
+
+            .skill-heading {
+                font-weight: 600;
+                font-size: 13px;
+            }
+
+            .skill-desc {
+                font-size: 12px;
+                margin-top: 4px;
+            }
+
+            #addrApp .reference {
+                top: 36px;
+                left: 0;
+            }
+
+            #addrApp .reference .card {
+                width: 100%;
+            }
+        }
+
+        /* Extra small (359px and below) */
+        @media (max-width: 359px) {
+            .page-content {
+                padding: 12px 8px;
+            }
+
+            .profile-header {
+                padding: 20px 12px;
+            }
+
+            .profile-avatar {
+                width: 80px;
+                height: 80px;
+            }
+
+            .profile-name {
+                font-size: 1.1rem;
+            }
+
+            .profile-role {
+                font-size: 0.8rem;
+            }
+
+            .card-head .card-title {
+                font-size: 14px;
+            }
+
+            .info-value {
+                font-size: 12px;
+            }
+
+            .skill-name {
+                font-size: 11px;
+            }
+
+            .competency-title {
+                font-size: 11px;
+            }
+
+            .competency-sub {
+                font-size: 10px;
+            }
+
+            .about-me-text p {
+                font-size: 12px;
+            }
         }
 
         /* Ensure weather icon appears white on dark/black themes */
