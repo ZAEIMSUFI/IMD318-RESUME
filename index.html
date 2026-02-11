@@ -271,6 +271,36 @@
             .scroll-indicator {
                 display: none;
             }
+            /* Prevent control buttons and dropdowns from overlaying content on mobile */
+            .control-buttons {
+                position: static !important;
+                bottom: auto !important;
+                right: auto !important;
+                left: auto !important;
+                transform: none !important;
+                width: auto !important;
+                display: flex !important;
+                gap: 8px;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+                z-index: 0 !important;
+                padding: 6px 8px;
+                background: transparent;
+            }
+            .control-dropdown {
+                position: static !important;
+                width: auto !important;
+                box-shadow: none !important;
+                border: 1px solid rgba(255,255,255,0.04) !important;
+                margin-top: 6px;
+            }
+            /* ensure main navigation and page content sit above any controls */
+            .main-nav { position: relative !important; z-index: 2; }
+            .page, .page-content { position: relative; z-index: 3; }
+            /* hide marquee toggle which can block small screens */
+            .marquee-toggle { display: none !important; }
+            /* provide bottom breathing room so action buttons don't cover content */
+            .page { padding-bottom: 18px; }
             /* Hide music and datetime widgets on mobile to prevent overlap */
             .spotify-widget, .datetime-widget {
                 display: none;
