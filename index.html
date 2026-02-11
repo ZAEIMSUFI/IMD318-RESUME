@@ -271,6 +271,23 @@
             .scroll-indicator {
                 display: none;
             }
+            /* Hide music and datetime widgets on mobile to prevent overlap */
+            .spotify-widget, .datetime-widget {
+                display: none;
+            }
+
+            /* Tighter hero banner for small viewports */
+            .hero-banner {
+                min-height: auto;
+            }
+            .hero-banner-image {
+                height: 160px;
+                background-size: cover;
+                background-position: center;
+            }
+            .hero-banner-content {
+                padding: 10px 6px;
+            }
         }
         
         /* Extra small (under 360px) */
@@ -299,6 +316,12 @@
             .marquee-item {
                 font-size: 0.75rem;
             }
+            /* hide widgets on extra-small screens */
+            .spotify-widget, .datetime-widget { display: none; }
+
+            /* further tighten hero banner */
+            .hero-banner-image { height: 120px; }
+            .hero-banner-content { padding: 8px 6px; }
         }
     </style>
 </head>
