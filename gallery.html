@@ -952,8 +952,8 @@
              renderPagination();
          }
  
-        // toggle between images and videos
-        function toggleMedia() {
+        // central function to set media view and persist preference
+        function setMediaView(type) {
             const grid = document.querySelector('.gallery-grid');
             const vgrid = document.getElementById('videoGrid');
             const pag = document.getElementById('galleryPagination');
@@ -961,44 +961,51 @@
             const txt = document.getElementById('toggleText');
             const tip = document.querySelector('#mediaToggle .tooltip');
             const cardTitleEl = btn && btn.closest('.card') ? btn.closest('.card').querySelector('.card-title') : null;
-            const vShown = window.getComputedStyle(vgrid).display !== 'none';
-            if (vShown) {
-                vgrid.style.display = 'none';
-                grid.style.display = '';
-                pag.style.display = '';
-                btn.classList.remove('toggle-active');
-                txt.textContent = 'SHOW VIDEOS';
-                if (tip) tip.textContent = 'Switch to videos';
-                if (cardTitleEl) cardTitleEl.textContent = 'Photo Gallery';
-                btn.setAttribute('aria-pressed','false');
-                currentMediaType = 'image';
-            } else {
+            if (type === 'video') {
                 vgrid.style.display = 'flex';
                 grid.style.display = 'none';
-                pag.style.display = 'none';
+                if (pag) pag.style.display = 'none';
                 btn.classList.add('toggle-active');
-                txt.textContent = 'SHOW PICTURES';
+                if (txt) txt.textContent = 'SHOW PICTURES';
                 if (tip) tip.textContent = 'Switch to pictures';
                 if (cardTitleEl) cardTitleEl.textContent = 'Video Gallery';
                 btn.setAttribute('aria-pressed','true');
                 currentMediaType = 'video';
+                localStorage.setItem('galleryMediaType', 'video');
+            } else {
+                vgrid.style.display = 'none';
+                grid.style.display = '';
+                if (pag) pag.style.display = '';
+                btn.classList.remove('toggle-active');
+                if (txt) txt.textContent = 'SHOW VIDEOS';
+                if (tip) tip.textContent = 'Switch to videos';
+                if (cardTitleEl) cardTitleEl.textContent = 'Photo Gallery';
+                btn.setAttribute('aria-pressed','false');
+                currentMediaType = 'image';
+                localStorage.setItem('galleryMediaType', 'image');
             }
         }
+
+        // toggle between images and videos (uses setMediaView)
+        function toggleMedia() {
+            const vgrid = document.getElementById('videoGrid');
+            const vShown = window.getComputedStyle(vgrid).display !== 'none';
+            setMediaView(vShown ? 'image' : 'video');
+        }
  
-         // keyboard accessibility for toggle (Enter / Space)
-         (function(){
-             const btn = document.getElementById('mediaToggle');
-             if (btn) {
-                 btn.addEventListener('keydown', function(e){
-                     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleMedia(); }
-                 });
-                // initialize tooltip text and header to match initial state
-                const tip = document.querySelector('#mediaToggle .tooltip');
-                if (tip) tip.textContent = 'Switch to videos';
-                const cardTitleEl = btn.closest('.card') ? btn.closest('.card').querySelector('.card-title') : null;
-                if (cardTitleEl) cardTitleEl.textContent = 'Photo Gallery';
-             }
-         })();
+
+        // keyboard accessibility for toggle (Enter / Space) and initialize based on saved preference
+        (function(){
+            const btn = document.getElementById('mediaToggle');
+            if (btn) {
+                btn.addEventListener('keydown', function(e){
+                    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggleMedia(); }
+                });
+            }
+            // Initialize view based on saved preference (default to images)
+            const saved = localStorage.getItem('galleryMediaType') || 'image';
+            setMediaView(saved === 'video' ? 'video' : 'image');
+        })();
  
          // Close lightbox on Escape / arrows
          document.addEventListener('keydown', function(e) {
