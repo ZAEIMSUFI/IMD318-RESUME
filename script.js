@@ -224,7 +224,6 @@ function updateDateTime() {
 
 /* ===== SPOTIFY PLAYER ===== */
 const spotifyTracks = [
-    'https://open.spotify.com/embed/track/46kspZSY3aKmwQe7O77fCC?utm_source=generator&theme=0',
     'https://open.spotify.com/embed/track/2OZVskV28xxJjjhQqKTLSg?utm_source=generator&theme=0',
     'https://open.spotify.com/embed/track/5de9Ho64dovuQI8Uhn5gPD?utm_source=generator&theme=0',
     'https://open.spotify.com/embed/track/7AQim7LbvFVZJE3O8TYgf2?utm_source=generator&theme=0',
