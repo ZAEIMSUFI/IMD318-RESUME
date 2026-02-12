@@ -29,74 +29,122 @@
         
         /* Tablet (768px and below) */
         @media (max-width: 768px) {
-            /* Hero section adjustments */
+            .page-content {
+                padding: 20px 16px;
+            }
+
+            /* Hero banner adjustments */
+            .hero-banner {
+                margin-bottom: 0;
+            }
+            .hero-banner-image {
+                height: 200px;
+            }
+            .hero-banner-content {
+                padding: 24px 20px;
+            }
+            .hero-badge {
+                padding: 8px 12px;
+                font-size: 0.9rem;
+                margin-bottom: 12px;
+            }
+
+            /* Hero section text */
             .hero-title-enhanced {
-                font-size: 2.2rem !important;
+                font-size: 2rem !important;
+                margin-bottom: 12px;
+                line-height: 1.2;
             }
             .hero-subtitle-enhanced {
-                font-size: 1.1rem !important;
+                font-size: 1rem !important;
+                margin-bottom: 16px;
+                line-height: 1.4;
             }
             
             /* Hero stats - 3 columns stay but shrink */
             .hero-stats {
-                gap: 12px;
+                gap: 14px;
+                margin: 16px 0;
             }
             .stat-item {
-                padding: 12px 8px;
+                padding: 12px 10px;
             }
             .stat-number {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
             .stat-label {
-                font-size: 0.75rem;
+                font-size: 0.8rem;
             }
             
-            /* Hero buttons - stack on smaller tablets */
+            /* Hero buttons */
             .hero-actions {
                 flex-wrap: wrap;
-                gap: 10px;
+                gap: 12px;
                 justify-content: center;
+                margin-top: 16px;
             }
             .hero-btn {
-                padding: 12px 20px;
+                padding: 12px 24px;
                 font-size: 0.95rem;
             }
             
+            /* Featured section spacing */
+            .featured-section {
+                margin-bottom: 28px;
+                padding: 0;
+            }
+            .section-header {
+                margin-bottom: 16px;
+            }
+
             /* Skills showcase - 2 columns */
             .skills-showcase {
                 grid-template-columns: repeat(2, 1fr) !important;
-                gap: 16px;
+                gap: 14px;
             }
             .skill-card {
-                padding: 20px;
+                padding: 18px;
             }
             .skill-card h3 {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
+                margin: 10px 0 8px 0;
             }
             .skill-card p {
-                font-size: 0.9rem;
+                font-size: 0.88rem;
+                margin: 0 0 8px 0;
             }
             
             /* Quick links - 2 columns */
             .quick-links-enhanced {
                 grid-template-columns: repeat(2, 1fr) !important;
-                gap: 16px;
+                gap: 14px;
+            }
+            .quick-card-enhanced {
+                min-height: 120px;
             }
             
             /* Section title */
             .section-title {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
+                margin: 0;
             }
             .section-subtitle {
-                font-size: 1rem;
+                font-size: 0.95rem;
+                margin: 4px 0 0 0;
             }
             
             /* CTA section */
+            .cta-section {
+                padding: 24px 20px;
+                margin-top: 20px;
+            }
             .cta-title {
-                font-size: 1.8rem;
+                font-size: 1.5rem;
+                margin-bottom: 12px;
             }
             .cta-text {
-                font-size: 1rem;
+                font-size: 0.95rem;
+                margin-bottom: 16px;
             }
             .cta-buttons {
                 gap: 12px;
@@ -111,155 +159,222 @@
         
         /* Mobile (480px and below) */
         @media (max-width: 480px) {
+            .page-content {
+                padding: 14px 12px;
+            }
+
+            /* Hero banner for mobile */
+            .hero-banner {
+                min-height: auto;
+                margin-bottom: 0;
+            }
+            .hero-banner-image {
+                height: 180px;
+                background-size: cover;
+                background-position: center;
+            }
+            .hero-banner-content {
+                padding: 20px 16px;
+            }
+
             /* Hero section - mobile first, tightened for small screens */
-            .hero-title-enhanced {
-                font-size: 1.6rem !important;
+            .hero-badge {
+                padding: 6px 11px;
+                font-size: 0.82rem;
                 margin-bottom: 10px;
+                display: inline-block;
+            }
+
+            .hero-title-enhanced {
+                font-size: 1.7rem !important;
+                margin-bottom: 8px;
+                font-weight: 700;
+                line-height: 1.15;
             }
             .hero-subtitle-enhanced {
-                font-size: 0.85rem !important;
-                margin-bottom: 12px;
+                font-size: 0.9rem !important;
+                margin-bottom: 14px;
+                line-height: 1.3;
+                opacity: 0.95;
             }
             
-            /* Hero badge */
-            .hero-badge {
-                padding: 6px 10px;
-                font-size: 0.8rem;
-            }
-            
-            /* Hero stats - vertical stack */
+            /* Hero stats - vertical stack but more compact */
             .hero-stats {
-                flex-direction: column;
-                gap: 8px;
-                margin: 12px 0;
-            }
-            .stat-item {
-                padding: 8px;
                 flex-direction: row;
                 gap: 10px;
+                margin: 14px 0;
+                justify-content: space-around;
+                flex-wrap: wrap;
+            }
+            .stat-item {
+                padding: 8px 6px;
+                flex-direction: column;
+                gap: 4px;
                 align-items: center;
+                flex: 0 1 auto;
             }
             .stat-number {
-                font-size: 1.3rem;
-                min-width: 44px;
+                font-size: 1.4rem;
+                font-weight: 700;
             }
             .stat-label {
-                font-size: 0.65rem;
-                text-align: left;
+                font-size: 0.7rem;
+                text-align: center;
+                opacity: 0.85;
             }
             
-            /* Hero buttons - single column */
+            /* Hero buttons - full width, better tap target */
             .hero-actions {
                 flex-direction: column;
-                gap: 8px;
+                gap: 10px;
                 width: 100%;
+                margin-top: 14px;
             }
             .hero-btn {
                 width: 100%;
-                padding: 12px 18px;
-                font-size: 0.85rem;
+                padding: 13px 16px;
+                font-size: 0.9rem;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
             }
             
+            /* Featured section spacing */
+            .featured-section {
+                padding: 0;
+                margin-bottom: 24px;
+            }
+            .section-header {
+                margin-bottom: 14px;
+            }
+
             /* Skills showcase - 1 column */
             .skills-showcase {
                 grid-template-columns: 1fr !important;
-                gap: 10px;
+                gap: 12px;
             }
             .skill-card {
-                padding: 14px;
+                padding: 16px;
             }
             .skill-card h3 {
-                font-size: 1rem;
+                font-size: 1.05rem;
+                margin: 10px 0 6px 0;
+                font-weight: 600;
             }
             .skill-card p {
-                font-size: 0.8rem;
-                margin: 6px 0;
+                font-size: 0.85rem;
+                margin: 0 0 8px 0;
+                line-height: 1.3;
             }
             .skill-tags {
-                gap: 5px;
+                gap: 6px;
             }
             .skill-tag {
-                padding: 3px 8px;
-                font-size: 0.65rem;
+                padding: 4px 9px;
+                font-size: 0.7rem;
             }
             .skill-card-icon {
-                font-size: 1.8rem;
+                font-size: 2rem;
+                margin-bottom: 8px;
             }
             
-            /* Quick links - 1 column */
+            /* Quick links - 1 column or 2 if space allows */
             .quick-links-enhanced {
                 grid-template-columns: 1fr !important;
-                gap: 10px;
+                gap: 12px;
             }
             .quick-card-enhanced {
-                padding: 14px;
-                min-height: 100px;
+                padding: 16px;
+                min-height: 110px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
             }
             .quick-card-icon-enhanced {
-                font-size: 1.6rem;
-                width: 36px;
-                height: 36px;
+                font-size: 2rem;
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                flex-shrink: 0;
             }
             .quick-card-title-enhanced {
-                font-size: 0.95rem;
-                margin-bottom: 4px;
+                font-size: 1rem;
+                margin-bottom: 3px;
+                font-weight: 600;
             }
             .quick-card-desc-enhanced {
-                font-size: 0.78rem;
+                font-size: 0.8rem;
+                line-height: 1.2;
+            }
+            .quick-card-arrow {
+                margin-left: auto;
+                flex-shrink: 0;
             }
             
             /* Section headers */
             .section-header {
-                margin-bottom: 12px;
+                padding: 0;
             }
             .section-title {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
+                margin: 0 0 6px 0;
+                font-weight: 700;
             }
             .section-subtitle {
-                font-size: 0.85rem;
-            }
-            
-            /* Featured section */
-            .featured-section {
-                padding: 16px 12px;
+                font-size: 0.88rem;
+                margin: 0;
+                opacity: 0.85;
             }
             
             /* CTA section */
             .cta-section {
-                padding: 18px 12px;
+                padding: 20px 16px;
+                margin-top: 16px;
             }
             .cta-title {
-                font-size: 1.2rem;
+                font-size: 1.3rem;
                 margin-bottom: 10px;
+                font-weight: 700;
+                line-height: 1.2;
             }
             .cta-text {
-                font-size: 0.85rem;
-                margin-bottom: 12px;
+                font-size: 0.88rem;
+                margin-bottom: 14px;
+                line-height: 1.4;
             }
             .cta-buttons {
-                gap: 8px;
+                gap: 10px;
                 flex-direction: column;
                 width: 100%;
             }
             .cta-btn {
-                padding: 10px 16px;
-                font-size: 0.85rem;
+                padding: 13px 16px;
+                font-size: 0.9rem;
                 width: 100%;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                gap: 8px;
             }
             
             /* Navigation - ensure touch-friendly */
             .main-nav {
-                gap: 6px;
-                padding: 10px 6px;
+                gap: 4px;
+                padding: 10px 8px;
             }
             .nav-item {
-                padding: 10px;
-                font-size: 1.1rem;
-            }
-            
-            /* Page content padding */
-            .page-content {
                 padding: 12px;
+                font-size: 1.1rem;
+                min-width: 44px;
+                min-height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
             
             /* Marquee text size */
@@ -275,53 +390,113 @@
             .spotify-widget, .datetime-widget {
                 display: none;
             }
-
-            /* Tighter hero banner for small viewports */
-            .hero-banner {
-                min-height: auto;
-            }
-            .hero-banner-image {
-                height: 160px;
-                background-size: cover;
-                background-position: center;
-            }
-            .hero-banner-content {
-                padding: 10px 6px;
-            }
         }
         
         /* Extra small (under 360px) */
         @media (max-width: 359px) {
+            .page-content {
+                padding: 12px 10px;
+            }
+
+            .hero-banner-image {
+                height: 150px;
+            }
+            .hero-banner-content {
+                padding: 16px 12px;
+            }
+
             .hero-title-enhanced {
-                font-size: 1.3rem !important;
+                font-size: 1.5rem !important;
+                margin-bottom: 6px;
             }
             .hero-subtitle-enhanced {
-                font-size: 0.75rem !important;
+                font-size: 0.8rem !important;
+                margin-bottom: 10px;
             }
+            .hero-badge {
+                font-size: 0.75rem;
+                padding: 5px 9px;
+            }
+            
             .hero-stats {
                 margin: 10px 0;
+                gap: 8px;
             }
             .stat-number {
-                font-size: 1rem;
+                font-size: 1.2rem;
             }
+            .stat-label {
+                font-size: 0.65rem;
+            }
+
+            .hero-btn {
+                padding: 11px 14px;
+                font-size: 0.85rem;
+            }
+
             .section-title {
-                font-size: 1rem;
+                font-size: 1.15rem;
             }
-            .cta-title {
-                font-size: 1rem;
+            .section-subtitle {
+                font-size: 0.8rem;
             }
-            .nav-item {
-                font-size: 1rem;
+
+            .skill-card {
+                padding: 14px;
             }
-            .marquee-item {
+            .skill-card h3 {
+                font-size: 0.95rem;
+            }
+            .skill-card p {
+                font-size: 0.8rem;
+            }
+            .skill-card-icon {
+                font-size: 1.6rem;
+            }
+
+            .quick-card-enhanced {
+                padding: 14px;
+                min-height: 100px;
+            }
+            .quick-card-icon-enhanced {
+                font-size: 1.6rem;
+                width: 36px;
+                height: 36px;
+            }
+            .quick-card-title-enhanced {
+                font-size: 0.92rem;
+            }
+            .quick-card-desc-enhanced {
                 font-size: 0.75rem;
             }
-            /* hide widgets on extra-small screens */
-            .spotify-widget, .datetime-widget { display: none; }
 
-            /* further tighten hero banner */
-            .hero-banner-image { height: 120px; }
-            .hero-banner-content { padding: 8px 6px; }
+            .cta-section {
+                padding: 16px 12px;
+            }
+            .cta-title {
+                font-size: 1.15rem;
+            }
+            .cta-text {
+                font-size: 0.82rem;
+            }
+            .cta-btn {
+                padding: 11px 14px;
+                font-size: 0.85rem;
+            }
+
+            .nav-item {
+                font-size: 1rem;
+                padding: 10px;
+            }
+
+            .marquee-item {
+                font-size: 0.7rem;
+            }
+
+            /* hide widgets on extra-small screens */
+            .spotify-widget, .datetime-widget {
+                display: none;
+            }
         }
     </style>
 </head>
